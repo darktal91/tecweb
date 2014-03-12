@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.imperofiere.com" elementFormDefault="qualified">
-  <xs:element name="utenti">
-    <xs:complexType>
-      <xs:sequence>
-	<xs:element name="utente" maxOccurs="unbounded" type="Tutente" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="utenti" type="Tutenti" />
+    
+  <xs:complexType name="Tutenti">
+    <xs:sequence>
+      <xs:element name="utente" maxOccurs="unbounded" type="Tutente" />
+    </xs:sequence>
+  </xs:complexType>
   
   <xs:complexType name="Tutente">
     <xs:sequence>
