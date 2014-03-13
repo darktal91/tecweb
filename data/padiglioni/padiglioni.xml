@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="stile.xsl"?>  
+<?xml-stylesheet type="text/xsl" href="padiglioni.xsl"?>  
 <padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
-xs:schemaLocation="http://www.imperofiere.com dati.xsd">
+xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
  <padiglione id="1">
   <nome>Jani</nome>
   <descrizione>Reminder</descrizione>
