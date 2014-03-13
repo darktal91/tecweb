@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns="http://www.imperofiere.com"
+targetNamespace="http://www.imperofiere.com" 
+elementFormDefault="qualified" >
+<xs:element name="padiglioni" type="TPadiglioni" />
+<xs:complexType name="TPadiglioni">
+	<xs:sequence>
+      		<xs:element name="padiglione" maxOccurs="unbounded" type="TPadiglione" />
+    	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TPadiglione">
+	<xs:sequence>
+      		<xs:element name="posizione" type="xs:string" />
+      		<xs:element name="nome" type="xs:string" />
+      		<xs:element name="descrizione" type="xs:string" />
+      		<xs:element name="foto" type="TFoto" />
+    	</xs:sequence>
+	<xs:attribute name="id" type="xs:string" />
+</xs:complexType>
+<xs:complexType name="TFoto">
+	<xs:sequence>
+		<xs:element name="immagine" maxOccurs="unbounded"  type="TImmagine" />
+    	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Timmagine">
+    	<xs:attribute name="src" type="xs:anyURI" use="required" />
+    	<xs:attribute name="alt" type="xs:string" />
+</xs:complexType>
+</xs:schema>
