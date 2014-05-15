@@ -1,16 +1,14 @@
 #!usr/local/bin/Perl
 use CGI;
+use XML::LibXSLT;
+use XML::LibXML;
 
+my $parser = XML::LibXML->new();
+my $xslt = XML::LibXSLT->new();
 
-my $doc=parser->parse_file($file);
-print $page->header,
-$page->start_html( 
-  -title => 'Impero Fiere - Padiglioni',
-  -meta => {'keywords' => 'padiglioni,Padiglioni,star wars,Star Wars, Star wars,star,wars',
-	    'description' => 'Pagina del contenuto dei padiglioni di Impero Fiera',
-	    'author' => 'CGMN'},
-	    -author => 'Gabriele Marcomin'
-),
-$page->h1("Padiglioni"),"\n";
-$page->end_html
-, "\n";
+my $source = $parser->parse_file('../data/padiglioni/padiglioni.xml');
+my $style_doc = $parser->parse_file('../data/padiglioni/padiglioni..xsl');
+my $stylesheet = $xslt->parse_stylesheet($style_doc);
+
+my $results = $stylesheet->transform($source);
+print $stylesheet->output_string($results);
