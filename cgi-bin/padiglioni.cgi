@@ -1,14 +1,17 @@
-#!/usr/bin/perl -w
-use CGI;
-use XML::LibXSLT;
-use XML::LibXML;
+#!/usr/bin/perl
 
-my $parser = XML::LibXML->new();
-my $xslt = XML::LibXSLT->new();
+# import required modules
+use XML::XSLT;
 
-my $source = $parser->parse_file('/../data/padiglioni/padiglioni.xml');
-my $style_doc = $parser->parse_file('/../data/padiglioni/padiglioni.xsl');
-my $stylesheet = $xslt->parse_stylesheet($style_doc);
+# define local variables
+my $xslfile = "../data/padiglioni/padiglioni.xsl";
+my $xmlfile = "../data/padiglioni/padiglioni.xml";
 
-my $results = $stylesheet->transform($source);
-print $stylesheet->output_string($results);
+# create an instance of XSL::XSLT processor
+my $xslt = XML::XSLT->new ($xslfile);
+
+# transform XML file and print output
+print $xslt->serve($xmlfile);
+
+# free up some memory
+$xslt->dispose(); 
