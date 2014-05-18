@@ -9,8 +9,12 @@
 	<xsl:call-template name="meta" />
       </head>
       <body>
-	<h2>Ciao mondo</h2>
-	<xsl:apply-templates select="padiglioni/padiglione"/> 
+	<xsl:call-template name="header"/>
+	<xsl:call-template name="nav" />
+	<div id="contenuto">
+	  <xsl:apply-templates select="padiglioni/padiglione"/> 
+	</div>
+	<xsl:call-template name="footer" />
       </body> 
     </html>
   </xsl:template>
@@ -31,5 +35,32 @@
     <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
     <meta name="language" content="italian it" />
   </xsl:template>
-
+  
+  <xsl:template name="header">
+    <div id="header">
+      <h1>Impero Fiere</h1>
+    </div>
+  </xsl:template>
+  
+  <xsl:template name="nav">
+    <div id="nav">
+      <ul class="menu">
+	<li><a href="">Home</a></li>
+	<li><a href="eventi.html">Eventi</a></li>
+	<li><a href="mappa.html">Mappa Padiglioni</a></li>
+	<li><a href="dovesiamo.html">Dove siamo</a></li>
+	<li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
+  </xsl:template>
+  
+  <xsl:template name="footer">
+    <div id="footer">
+      <a href="http://validator.w3.org/check?uri=referer"><img
+	src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" class="footimg"/></a>
+      <span id="rights">ImperoFiere - 2014</span>
+      <!--<img src="http://www.w3.org/Icons/valid-css-blue.png" class="footimg" alt="W3C CSS valid" />
+	  questa la aggiungeremo quando il validatore ci darà il permesso :P -->
+    </div>
+  </xsl:template>
 </xsl:stylesheet>
