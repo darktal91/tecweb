@@ -2,7 +2,8 @@
 <?xml-stylesheet type="text/xsl" href="padiglioni.xsl"?>  
 <padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
 xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
-  <img src="../images/padiglioni.gif" alt="Mappa della disposizione dei padiglioni"/>
+  <!--posizione dell'immagine rispetto a cgi-bin-->
+  <img src="padiglioni.jpeg" alt="Mappa della disposizione dei padiglioni"/>
   <padiglione id="A">
     <posizione>Il padiglione A si trova vicino all'entrata ovest, adiacente al padiglione B e di fronte al padiglione H</posizione>
     <evento nome="" inizio="" fine="" />
@@ -16,13 +17,13 @@ xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
     <evento nome="" inizio="" fine="" />
   </padiglione>
   <padiglione id="C">
-    <posizione>Il padiglione C è raggiungibile facilmente entrando nell'ingresso nord, inoltre si trova vicino ai padiglioni D e B</posizione>
+    <posizione>Il padiglione C e' raggiungibile facilmente entrando nell'ingresso nord, inoltre si trova vicino ai padiglioni D e B</posizione>
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
   </padiglione>
   <padiglione id="D">
-    <posizione>Il padiglione D è raggiungibile facilmente entrando nell'ingresso nord, è il secondo padiglione a sinistra successivo al padiglione C.</posizione>
+    <posizione>Il padiglione D e' raggiungibile facilmente entrando nell'ingresso nord, e' il secondo padiglione a sinistra successivo al padiglione C.</posizione>
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
@@ -40,7 +41,7 @@ xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
     <evento nome="" inizio="" fine="" />
   </padiglione>
   <padiglione id="G">
-    <posizione>Il padiglione G è il primo padiglione a destra entrando per l'entrata si e si trova di fronte al padiglione H</posizione>
+    <posizione>Il padiglione G e' il primo padiglione a destra entrando per l'entrata si e si trova di fronte al padiglione H</posizione>
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
     <evento nome="" inizio="" fine="" />
