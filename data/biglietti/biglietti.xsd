@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.imperofiere.com" xmlns="http://www.imperofiere.com" elementFormDefault="qualified">
+  
+<xs:element name="biglietti" type="Tbiglietti"/>
+  
+  <xs:complexType name="Tbiglietti">
+    <xs:sequence>
+      <xs:element name="biglietto" maxOccurs="unbounded" type="Tbiglietto" />
+    </xs:sequence>
+  </xs:complexType>
+ 
+  <xs:complexType name="Tbiglietto">
+    <xs:sequence>
+      <xs:element name="qtatot" type="xs:unsignedInt" />
+      <xs:element name="venduti" type="xs:unsignedInt" />
+    </xs:sequence>
+    <xs:attributeGroup ref="Tbigliettoattr"/>
+  </xs:complexType>
+
+  <xs:attributeGroup name="Tbigliettoattr">
+    <xs:attribute name="tipo" type="Ttipo" use="required" />
+    <xs:attribute name="prezzo" type="Tprezzo" use="required" />
+  </xs:attributeGroup>
+  
+  <xs:simpleType name="Ttipo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intero" />
+      <xs:enumeration value="ridotto" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="Tprezzo">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  
+  
+  
+</xs:schema>
