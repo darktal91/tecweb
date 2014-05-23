@@ -1,0 +1,54 @@
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  
+}
+#header{
+  width:80%;
+  margin:auto;
+  /*padding-left:25%;*/
+  border-style:solid;
+  border-width:0.005em;
+  border-color:grey;
+  border-radius: 1em;
+  -moz-border-radius: 1em; /* firefox */
+  -webkit-border-radius: 1em; /* safari, chrome */
+  padding-top:1%;
+  color:rgb(252,223,43);
+  font-size:1.025em;
+  overflow:hidden;
+}
+#header #logo{
+  width:20%;
+  margin:0 auto;
+  float:left;
+}
+#header #logo img{
+  max-height:100%;
+  max-width:100%;
+}
+#header #title{
+  height:auto;
+  margin-left:1%;
+  display:block;
+}
+#header #title img{
+  max-height:100%;
+  max-width:100%;
+}
+#nav{
+  
+  width:80%;
+  margin:auto;
+}
+#nav li{
+  margin:auto;
+  display:inline;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+#contenuto{
+  min-height:400px;
+}
+#footer{
+  
+}
