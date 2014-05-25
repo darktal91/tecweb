@@ -49,29 +49,33 @@
   </xsl:template>
   
   <xsl:template name="meta">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
-    <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
-    <meta name="description" content="Home Page del sito di ImperoFiere, societa' fieristica di Rovigo" />
-    <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
-    <meta name="language" content="italian it" />
+      <link type="text/css" rel="stylesheet" href="../css/stile.css" media="handheld, screen" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>TheEmpireCon.it - Padiglioni</title>
+      <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
+      <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
+      <meta name="description" content="Home Page del sito di The Empire Con, societa' fieristica di Rovigo" />
+      <meta name="keywords" content="index, Empire Con, Con, Rovigo, Empire" />
+      <meta name="language" content="italian it" />
   </xsl:template>
   
   <xsl:template name="header">
-    <div id="header">
-      <h1>Impero Fiere</h1>
-    </div>
+      <div id="header">
+          <div id="logo" >
+              <img src="../image/impero.png" />
+          </div>
+      </div>
   </xsl:template>
   
   <xsl:template name="nav">
     <div id="nav">
-      <ul class="menu">
-	<li><a href="">Home</a></li>
-	<li><a href="eventi.html">Eventi</a></li>
-	<li><a href="mappa.html">Mappa Padiglioni</a></li>
-	<li><a href="dovesiamo.html">Dove siamo</a></li>
-	<li><a href="contatti.html">Contatti</a></li>
-      </ul>
+        <ul tabindex="1">
+            <li><a accesskey="h" href="../index.html">Home</a></li>
+            <li><a accesskey="e" href="eventi.cgi">Eventi</a></li>
+            <li><a accesskey="p" href="">Padiglioni</a></li>
+            <li><a accesskey="d" href="../dovesiamo.html">Dove siamo</a></li>
+            <li><a accesskey="c" href="../contatti.html">Contatti</a></li>
+        </ul>
     </div>
   </xsl:template>
   
