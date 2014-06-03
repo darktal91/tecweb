@@ -4,15 +4,17 @@
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="it" lang="it">
             <head>
-	            <title>empirecon.it - Padiglioni</title>
+	            <title>TheEmpireCon.it - Padiglioni</title>
 	            <xsl:call-template name="meta" />
             </head>
             <body>
 	            <xsl:call-template name="header"/>
-	            <xsl:call-template name="nav" />
                 <div id="posizione">Ti trovi in: Home > Padiglioni</div>
-	            <div id="contenuto">
-	                <xsl:apply-templates select="padiglioni"/>
+	            <div id="corpo">
+                    <xsl:call-template name="nav" />
+                    <div id="contenuto">
+	                    <xsl:apply-templates select="padiglioni"/>
+                    </div>
 	            </div>
 	            <xsl:call-template name="footer" />
             </body>
@@ -75,7 +77,7 @@
             <li><a accesskey="p" href="">Padiglioni</a></li>
             <li><a accesskey="d" href="../dovesiamo.html">Dove siamo</a></li>
             <li><a accesskey="c" href="../contatti.html">Contatti</a></li>
-            <li><a accesskey="u" href="../areautente.html">Area utente</a></li>
+            <li><a accesskey="u" href="../areautente.html">Il mio account</a></li>
         </ul>
     </div>
   </xsl:template>
