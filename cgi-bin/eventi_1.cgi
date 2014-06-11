@@ -3,8 +3,10 @@
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
+use XML::LibXML::NodeList;
 
 print "Content-type: text/html\n\n";
+
 
 # $login{"level"} indica il livello di accessibilita' dell'utente ( 0 = non loggato, 1 = utente, 2 = admin)
 
@@ -12,10 +14,10 @@ print "Content-type: text/html\n\n";
 
 $file_acquisti = 'acquisti.xml';
 $ns_uri  = 'http://www.imperofiere.com';
-$ns_abbr = "d";
+$ns_abbr = 'd';
 
 #espressioni xpath
-my $ticketTypesPath = "/acquisti/tipologia/@id";
+my $ticketTypesXPath = "/${ns_abbr}:acquisti/${ns_abbr}:tipologia/\@id";
 
 #messaggi errore
 $parsing_err     = "Operazione di parsing fallita";
@@ -25,23 +27,22 @@ $access_root_err = "Impossibile accedere alla radice";
 my $parser = XML::LibXML->new();
 
 #parser del documento
-my $doc_acq = parser->parse_file($file_acquisti) || die($parsing_err);
+my $doc_acq = $parser->parse_file($file_acquisti) || die($parsing_err);
 
 #recupero l'elemento radice
-my $root_acq = doc_acq->getDocumentElement || die ($access_root_err);
+my $root_acq = $doc_acq->getDocumentElement || die($access_root_err);
 
 #inserisco il namespace
-$doc_acq->documetElement->setNamespace($ns_uri,$ns_abbr);
+$doc_acq->documentElement->setNamespace($ns_uri,$ns_abbr);
 
-my @tipiBiglietti = $root_acq->findnodes($ticketTypesPath); # TODO : sub getTicketTypes ?  
+my @tipiBiglietti = $root_acq->findnodes($ticketTypesXPath); # TODO : sub getTicketTypes ?  
 
 
-
-foreach $tipo (@tipiBiglietti){
-  print $tipo . "<br />"; # TODO : SOLO TESTING
+foreach my $tipo (@tipiBiglietti){
+  print $tipo->NodeName() . "<br />"; # TODO : SOLO TESTING
 }
 
-print << "EOF";
-
+print << "EOF"
 
 EOF
+;
