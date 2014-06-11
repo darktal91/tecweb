@@ -7,7 +7,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
 $VERSION	= 1.00;
 @ISA		= qw(Exporter);
-@EXPORT		= qw(stampa_header, stampa_footer);
+@EXPORT		= qw(stampa_header, stampa_footer, notify);
 
 sub stampa_header {
   print <<EOF;
@@ -43,6 +43,12 @@ sub stampa_footer {
 </body>
 </html>
 EOF
+}
+
+sub notify {
+  my $type = $_[0];
+  my $message = $_[1];
+  print "<div id=\"notifica\"><p id=\"$type\">$message</p></div>\n";
 }
 
 1;
