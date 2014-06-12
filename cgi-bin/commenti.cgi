@@ -5,11 +5,18 @@ use warnings;
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
-use DateTime;
 use MyModule;
 
 print "Content-type: text/html\n\n";
 
+(my $sec, my $min, my $hour, my $mday, my $mon, my $year, my @rest) = localtime();
+$year +=1900;
+$min = sprintf("%02d", $min); # aggiunge lo zero se $min < 10
+$hour = sprintf("%02d", $hour);
+$mday = sprintf("%02d", $mday);
+$mon = sprintf("%02d", $mon);
+
+my $currentdatetime = "$mday/$mon/$year alle $hour:$min";
 
 
 # - LOGIN & HEADER
@@ -53,7 +60,7 @@ my $doc = $parser->parse_file($file) || die (MyModule::notify("error", "Parser f
 my $root = $doc->getDocumentElement || die (MyModule::notify("error", "Root non trovata!"));
 $doc->documentElement->setNamespace("http://www.imperofiere.com", "ns") || die (MyModule::notify("error", "Impossibile assegnare il namespace."));
 
-
+  
 
 # - GESTORE ELIMINAZIONE POST
 
@@ -87,15 +94,15 @@ if ( exists($input{"operation"}) && $input{"operation"} eq "DELETE" ) {
 if ( exists($input{"operation"}) && $input{"operation"} eq "INSERT") {
   if ($login{"level"} > 0) {
 
-    my $currentdatetime = DateTime->now();
     $query = "//ns:commento[ ns:username/text() = '$input{username}' and ns:datetime/text() = '$currentdatetime' ]";
     
     $commento = $root->findnodes($query)->get_node(1);
-    # se trova un commento con stesso username e datetime si attiva il filtro antispam 
-    #	(da rifare: dovrebbe eseguire un controllo sui minuti e non sui secondi) <===============================================================
+    
+    # se trova un commento con stesso username e datetime si attiva un filtro antispam 
     if ($commento) {
-      MyModule::notify("error", "Filtro antispam: aspettare un secondo tra l'inserimento di un messaggio ed un altro.");
+      MyModule::notify("error", "Filtro antispam: aspettare un minuto tra l'inserimento di due messaggi.");
     }
+    
     # creazione del frammento e inserimento
     else  {
     
@@ -150,18 +157,21 @@ eof
 # - STAMPA DELLA LISTA DEI COMMENTI
 
 my $results = $root->findnodes('//ns:commento');
+
 foreach $commento ($results->get_nodelist) {
+  
   my $username = $commento->findnodes('./ns:username/text()');
   my $datetime = $commento->findnodes('./ns:datetime/text()');
   my $testo = $commento->findnodes('./ns:testo/text()');
+  
   print << "eof";
 <div id="commento">
-<h3> $username, $datetime
+<p><b>$username</b>, il $datetime ha scritto:</p>
 eof
 # bottone per l'eliminazione (se amministratore)
   if ($login{"level"} == 2) {
     print << "eof";
-, <form action="commenti.cgi" method="POST">
+<form action="commenti.cgi" method="POST">
   <input type="hidden" name="username" value="$username" />
   <input type="hidden" name="datetime" value="$datetime" />
   <input type="hidden" name="operation" value="DELETE" />
@@ -170,7 +180,6 @@ eof
 eof
   }
   print << "eof";
-</h3>
 <p> $testo </p>
 </div>
 eof

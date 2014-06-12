@@ -34,7 +34,7 @@ sub stampa_header {
   <body>
 EOF
 # - controllo del login (qui viene solamente simulato)
-  my %login = ( "username" => "Giammariagianni", "level" => 2 );
+  my %login = ( "username" => "Giammariagianni", "level" => 1 );
   return %login;
 }
 
