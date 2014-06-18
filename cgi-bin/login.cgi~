@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+
+use CGI;
+use CGI::Carp qw(fatalsToBrowser);
+use XML::LibXML;
+use Digest::SHA qw(sha256_hex);
+use CGI::Session();
+
+# sub createSession() {
+#   
+# #   print $session->header(-location=>"$base");
+# }
+
+$page = new CGI;
+
+$filedati = "utenti.xml";
+
+#creo il parser
+$parser = XML::LibXML -> new();
+
+#apro il file
+$doc = $parser->parse_file($filedati) || die ("operazione di parsificazione fallita.");
+
+#leggo la radice
+$root = $doc->getDocumentElement || die("Accesso alla radice fallito.");
+
+my $success = $root->exists("/utente[nickname='admin']");
+  
+
