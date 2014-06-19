@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
     <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link type="text/css" rel="stylesheet" href="css/stile.css" media="handheld, screen" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>TheEmpireCon.it - Home</title>
         <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
         <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
@@ -11,24 +11,42 @@
         <meta name="language" content="italian it" />
     </head>
     <body>
-        <div id="header">
-            <div id="logo" >
-                <img src="image/impero.png" />
-            </div>
-        </div>
+        <div id="header">The Empire Con</div>
         <div id="posizione">Ti trovi in: Home</div>
         <div id="contenuto">
 
-            <div id="nav">
-                <ul tabindex="1">
-                    <li><a accesskey="h" href="">Home</a></li>
-                    <li><a accesskey="e" href="cgi-bin/login.cgi">Eventi</a></li>
-                    <li><a accesskey="p" href="cgi-bin/padiglioni.cgi">Padiglioni</a></li>
-                    <li><a accesskey="d" href="dovesiamo.html">Dove siamo</a></li>
-                    <li><a accesskey="c" href="contatti.html">Contatti</a></li>
-                    <li><a accesskey="u" href="">Area utente</a></li>
-                </ul>
-            </div>
+       	 <div id="bar">
+		<div id="login">
+			<TMPL_VAR ERRORE>
+    				<form method="post" action="login.cgi">
+     					<fieldset>
+						<legend>Login:</legend>
+						<ul>
+							<li><label for="username">Username</label></li>
+							<li><input type="text" name="username" id="username" value="" size="16"/></li>
+							<li><label for="password">Password:</label></li>
+							<li><input type="password" name="password" id="password" value="" size="16" /></li>
+							<li><input type="submit" value="Invio" /> <a accesskey="r" href="cgi-bin/registrazione.cgi">Registrati</a></li>
+						</ul>
+					</fieldset>
+      						<input type="hidden" name="referrer" value="<TMPL_VAR RIFE ESCAPE=HTML>" />
+      						<input type="hidden" name="submitted" value="1" />
+    					</form>
+
+		</div>
+		<div id="nav">
+                	<ul tabindex="1">
+                   		<li><a accesskey="h" href="">Home</a></li>
+                    		<li><a accesskey="e" href="cgi-bin/eventi.cgi">Eventi</a></li>
+				<li><a accesskey="p" href="cgi-bin/photogallery.cgi">Photo Gallery</a></li>
+				<li><a accesskey="a" href="cgi-bin/biglietti.cgi">Acquista biglietti</a></li>
+                    		<li><a accesskey="p" href="cgi-bin/padiglioni.cgi">Padiglioni</a></li>
+				<li><a accesskey="p" href="cgi-bin/commenti.cgi">Commenti</a></li>
+                    		<li><a accesskey="d" href="cgi-bin/dovesiamo.cgi">Dove siamo</a></li>
+                    		<li><a accesskey="c" href="cgi-bin/contatti.cgi">Contatti</a></li>
+                	</ul>
+            	</div>
+	</div>
             <div id=corpo>
 	        <p>Un infinito di passioni può essere contenuto in un minuto come una folla in un piccolo spazio. <br />
                 Gustave Flaubert</p>
