@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Nome Pagina - ImperoFiere</title>
+    <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
+    <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
+    <meta name="description" content="Home Page del sito di ImperoFiere, società fieristica di Rovigo" />
+    <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
+    <meta name="language" content="italian it" />
+  </head>
+
+  <body>
+	 <h1>Acquista i tuoi biglietti ora!</h1>
+	 <p>Per poter partecipare all'Empire Con è necessario iscriversi : approfittane subito! </p>
+	 
+	 <form method="post" action="acquisti.cgi">
+			<fieldset>
+				 <legend>Acquista il biglietto</legend>
+				 <label for="username">Username:</label>
+				 <input type="text" id="username" value="" size="16" />
+				 <label for="tipo">Tipo del biglietto:</label>
+				 <select name="tipi" size="1">
+						<TMPL_LOOP NAME="LOOP_TIPIBIGLIETTI"><option><TMPL_VAR NAME="TIPIBIGLIETTI"></option>
+						</TMPL_LOOP>
+				 </select>
+				 <label for="quantita">Quantità: </label>
+				 <input type="text" id="quantita" value="1" /> 
+				 <input type="submit" value="acquista" name="acquista" />	
+			</fieldset>
+	 </form>
+  </body>
+</html>
