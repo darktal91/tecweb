@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.imperofiere.com"
+  targetNamespace="http://www.imperofiere.com"
+  elementFormDefault="qualified" >
+<xs:element name="acquisti" type="Tacquisti"/>
+
+  <xs:complexType name="Tacquisti">
+    <xs:sequence>
+      <xs:element name="tipologia" maxOccurs="unbounded" type="Ttipologia" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Ttipologia">
+    <xs:sequence>
+      <xs:element name="acquisto" maxOccurs="unbounded" type="Tacquisto" />
+    </xs:sequence>
+    <xs:attributeGroup ref="Ttipologiattr"/>
+  </xs:complexType>
+  
+  <xs:attributeGroup name="Ttipologiattr">
+    <xs:attribute name="id" type="Ttipo" use="required" />
+    <xs:attribute name="prezzo" type="Tprezzo" use="required" />
+  </xs:attributeGroup>
+
+    <xs:simpleType name="Ttipo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intero" />
+      <xs:enumeration value="ridotto" />
+      <xs:enumeration value="gratis" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="Tprezzo">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="Tacquisto">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attributeGroup ref="Tacquistoattr"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:attributeGroup name="Tacquistoattr">
+    <xs:attribute name="username" type="xs:string" use="required" />
+    <xs:attribute name="datatime" type="xs:dateTime" use="required" />
+  </xs:attributeGroup>
+
+  
+  <!--
+  TODO :
+	  attualmente il tipo username è solo una string, non che la cosa mi comodi. 
+  
+	  Da rivedere anche Ttipo: non mi piace l'idea di elencare nello schema i vari tipi di biglietto, al contempo però non è che sia granchè lasciare semplicemente come string il tipo.
+  -->
+  
+</xs:schema>
