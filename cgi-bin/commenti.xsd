@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.imperofiere.com" elementFormDefault="qualified" xmlns="http://www.imperofiere.com">
+  
+  <xs:element name="commentbook" type="Tbook" />
+  
+  <xs:complexType name="Tbook">
+    <xs:sequence>
+      <xs:element name="commento" type="Tcommento" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Tcommento">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string" />
+      <xs:element name="datetime" type="xs:dateTime" />
+      <xs:element name="testo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>
