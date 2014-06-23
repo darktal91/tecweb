@@ -1,4 +1,6 @@
-body {
+@media screen, handheld {
+
+ body {
 	font-family: Georgia, serif;
 	font-size: 0.8em;
 	color: #fff;
@@ -9,11 +11,10 @@ body {
 a:link {
 	color: #6d0000;
 }
-
 a:visited {
 	color: #ff3e3e;
 }
-	
+
 #prettyimage {
 	position: absolute;
 	left: 70%;
@@ -30,12 +31,10 @@ a:visited {
 	min-height: 150px;
 	padding: 1em;
 }
-
 #header #logo {
-	margin-left: auto;
-	margin-right: auto;
+	max-width: 100%;
+	max-height: 100%;
 }
-
 #contenuto {
 	margin-left: auto;
 	margin-right: auto;
@@ -53,7 +52,6 @@ a:visited {
 	border-width: 1px;
 	background-color: #000;
 }
-
 #posizione {
 	background-color: #550000;
 	padding: 0.2em;
@@ -61,13 +59,11 @@ a:visited {
 #posizione #nomeposizione {
 	font-weight: bold;
 }
-
 #posizione #salta {
 	display: block;
 	height: 0;
 	overflow: hidden;
 }
-
 #bar {
 	font-family: "Courier New", monospace;
 	border-style: solid none none none;
@@ -78,7 +74,6 @@ a:visited {
 	width: 200px;
 	float: left;
 }
-
 #login {
 	text-align: center;
 	background-color: #000;
@@ -86,11 +81,9 @@ a:visited {
 	line-height: 1em;
 	padding: 2px;
 }
-
 #login form fieldset {
-	border: 0px;
+	border: none;
 }
-
 #login legend {
 	position: absolute;
 	height: 0;
@@ -105,7 +98,6 @@ a:visited {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 #login input.button , #login a.button {
 	width: 75px;
 	font-family: Georgia, serif;
@@ -116,7 +108,10 @@ a:visited {
 	background-color: #000;
 	border: 1px solid #fff;
 }
-
+#login input:focus, #login a:focus {
+	outline: 1px dashed #f00;
+	border: 1px dashed #f00;
+}
 #nav ul {
 	list-style-type: none;
 	margin: 0;
@@ -130,7 +125,6 @@ a:visited {
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #fff;
 }
-
 #nav a {
 	display: block;
 	width: 100%;
@@ -142,12 +136,15 @@ a:visited {
 #nav a:visited {
 	color: #c8c8c8;
 }
-
 #nav a:hover {
 	background: #000;
 	font-size: 1.5em;
 }
-	
+#nav a:focus {
+	outline: 2px dashed #f00;
+	border: none;
+}
+
 #corpo {
 	margin-left: 200px;
 	color: #000;
@@ -158,7 +155,10 @@ a:visited {
 	border-color: #fff;
 	border-width: 1px;
 }
-	
+	#corpo a:focus {
+	outline: 2px dashed #f00;
+	border: none;
+}
 #footer {
 	border-style: solid none solid none;
 	border-color: #fff;
@@ -166,4 +166,6 @@ a:visited {
 	clear: both;
 	background-color: #550000;
 	padding: 0.5em;
+}
+
 }

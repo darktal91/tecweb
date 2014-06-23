@@ -1,0 +1,40 @@
+@media print {
+
+body {
+	font-family: Georgia, serif;
+	font-size: 1em;
+	color: #000;
+	background-color: #fff;
+}
+a:link:after, a:visited:after {
+	content: "[" attr(href) "] ";
+	font-size: 90%;
+}
+#prettyimage {
+	display: none;
+}
+#header {
+	text-align: center;
+}
+#header #logo {
+	width: 40%;
+}
+#salta {
+	display: none;
+}
+#posizione {
+	text-align: center;
+	padding: 1em;
+}
+#bar {
+	display: none;
+}
+#corpo {
+	padding: 1em;
+	border: 1px solid #000;
+}
+#footer {
+	display: none;
+}
+
+}
