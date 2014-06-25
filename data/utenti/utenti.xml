@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<utenti xmlns="http://www.imperofiere.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocationu="utenti.xsd">
+<!-- xmlns="http://www.imperofiere.com" xs:schemaLocation="http://www.imperofiere.com utenti.xsd" -->
+<utenti xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="utenti.xsd">
 	<utente>
 		<nickname>admin</nickname>
 		<password>d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892</password>

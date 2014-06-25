@@ -53,7 +53,7 @@ if ($cgi->param()) {
 #	ricerca dei nodi: http://www.perlmonks.org/?node_id=490846
 #	problemi relativi al namespacE: http://www.perlmonks.org/?node_id=531313
 
-my $file = 'commenti.xml';
+my $file = '../data/commenti/commenti.xml';
 my $parser = XML::LibXML->new();
 
 my $doc = $parser->parse_file($file) || die (MyModule::notify("error", "Parser fallito!"));

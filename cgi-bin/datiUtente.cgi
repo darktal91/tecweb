@@ -8,7 +8,7 @@ use HTML::Template;
 use Digest::SHA qw(sha256_hex);
 
 # creo il template
-my $template = HTML::Template->new(filename => 'datiUtente.tmpl');
+my $template = HTML::Template->new(filename => 'template/datiUtente.tmpl');
 
 # controllo che l'utente abbia effettuato l'accesso
 $session = CGI::Session->load();

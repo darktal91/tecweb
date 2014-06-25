@@ -1,6 +1,0 @@
-<Files ~ "^\.(htaccess|htpasswd)$">
-deny from all
-</Files>
-    DirectoryIndex ../cgi-bin/padiglioni.cgi  
-order deny,allow
-

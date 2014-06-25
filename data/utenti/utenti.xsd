@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.imperofiere.com" elementFormDefault="qualified">
-  <xs:element name="utenti">
-    <xs:complexType>
-      <xs:sequence>
-	<xs:element name="utente" maxOccurs="unbounded" type="Tutente" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<!--  targetNamespace="http://www.imperofiere.com" elementFormDefault="qualified" xmlns="http://www.imperofiere.com" -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="utenti" type="Tutenti" />
+    
+  <xs:complexType name="Tutenti">
+    <xs:sequence>
+      <xs:element name="utente" maxOccurs="unbounded" type="Tutente" />
+    </xs:sequence>
+  </xs:complexType>
   
   <xs:complexType name="Tutente">
     <xs:sequence>
@@ -16,7 +17,6 @@
       <xs:element name="cognome" type="xs:string" />
       <xs:element name="datanascita" type="xs:date" />
       <xs:element name="indirizzo" type="Tindirizzo" />
-      <xs:element name="telefono" type="xs:string" />
       <xs:element name="email" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -158,4 +158,4 @@
     </xs:restriction>
   </xs:simpleType>
   
-</xs:schema>    
+</xs:schema>   
