@@ -1,0 +1,40 @@
+@media screen, handheld {
+
+#prettyimage {
+	display: none;
+}
+#header {
+	min-height: 70px;
+}
+#contenuto {
+	width: 100%;
+}
+#bar {
+	float: none;
+	clear: both;
+	width: 100%;
+}
+#nav ul {
+	padding: 0.5em;
+	border: 3px double #fff;
+	text-align: center;
+}
+#nav {
+	padding: 0.5em;
+	
+}
+#nav ul li {
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+	display: inline-block;
+	width: auto;
+}
+#nav a:hover {
+	font-size: 1.3em;
+}
+#corpo {
+	margin-left: 0px;
+	width: auto;
+}
+
+}

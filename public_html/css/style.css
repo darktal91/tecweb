@@ -1,0 +1,171 @@
+@media screen, handheld {
+
+ body {
+	font-family: Georgia, serif;
+	font-size: 0.8em;
+	color: #fff;
+	background-image:url("../images/backgroundo.jpg");
+	background-repeat: repeat;
+	background-color: #000;
+}
+a:link {
+	color: #6d0000;
+}
+a:visited {
+	color: #ff3e3e;
+}
+
+#prettyimage {
+	position: absolute;
+	left: 70%;
+	background-image:url("../images/deathstar.gif");
+	background-repeat: no-repeat;
+	width: 600px;
+	height: 476px;
+	z-index: -1;
+}
+#header {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	min-height: 150px;
+	padding: 1em;
+}
+#header #logo {
+	max-width: 100%;
+	max-height: 100%;
+}
+#contenuto {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	max-width: 1024px;
+	/* ombreggiatura (da rivedere/ripudiare quella per ie8) */
+	-moz-box-shadow: 0px 0px 15px #fff;
+	-webkit-box-shadow: 0px 0px 15px #fff;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=6, Direction=135, Color='#fff')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=6, Direction=135, Color='#fff');
+	box-shadow: 0px 0px 15px #fff;
+	
+	border-style: solid solid none solid;
+	border-color: #fff;
+	border-width: 1px;
+	background-color: #000;
+}
+#posizione {
+	background-color: #550000;
+	padding: 0.2em;
+}
+#posizione #nomeposizione {
+	font-weight: bold;
+}
+#posizione #salta {
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+#bar {
+	font-family: "Courier New", monospace;
+	border-style: solid none none none;
+	border-color: #fff;
+	border-width: 1px;
+	color: #fff;
+	background-color: #000;
+	width: 200px;
+	float: left;
+}
+#login {
+	text-align: center;
+	background-color: #000;
+	color: #FFF;
+	line-height: 1em;
+	padding: 2px;
+}
+#login form fieldset {
+	border: none;
+}
+#login legend {
+	position: absolute;
+	height: 0;
+	overflow: hidden;
+}
+
+#login input.field {
+	width: 75px;
+	height: 1.5em;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#login input.button , #login a.button {
+	width: 75px;
+	font-family: Georgia, serif;
+	font-size: 1em;
+	padding: 2px 6px 2px 6px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #000;
+	border: 1px solid #fff;
+}
+#login input:focus, #login a:focus {
+	outline: 1px dashed #f00;
+	border: 1px dashed #f00;
+}
+#nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav li {
+	height: 1.5em;
+	background-color: #550000;
+	padding: 0.2em;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+}
+#nav a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 1.3em;
+	font-variant: small-caps;
+	color: #fff;
+}
+#nav a:visited {
+	color: #c8c8c8;
+}
+#nav a:hover {
+	background: #000;
+	font-size: 1.5em;
+}
+#nav a:focus {
+	outline: 2px dashed #f00;
+	border: none;
+}
+
+#corpo {
+	margin-left: 200px;
+	color: #000;
+	background-color: #fff;
+	min-height: 50em;
+	padding: 1em;
+	border-style: solid solid solid solid;
+	border-color: #fff;
+	border-width: 1px;
+}
+	#corpo a:focus {
+	outline: 2px dashed #f00;
+	border: none;
+}
+#footer {
+	border-style: solid none solid none;
+	border-color: #fff;
+	border-width: 1px;
+	clear: both;
+	background-color: #550000;
+	padding: 0.5em;
+}
+
+}
