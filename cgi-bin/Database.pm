@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-package Database;
-
-
-
-
-
-
-
-
-
-
-=======
 #!/usr/bin/perl -w
 
 use strict; 
@@ -54,4 +41,3 @@ sub getPad4id{
   my @result = $idpad->getElementsByTagName('padiglione');
   return @result;
 }
->>>>>>> marcomin
