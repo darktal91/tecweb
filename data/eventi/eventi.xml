@@ -1,19 +1,59 @@
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="padiglioni.xsl"?>  
-<padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+<?xml version="1.0"?> 
+<eventi xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
 xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
- <padiglione id="1">
-  <nome>Jani</nome>
-  <descrizione>Reminder</descrizione>
-  <foto>
-	<immagine src=""></immagine>
- </foto>
-</padiglione>
-<padiglione id="2">
-  <nome>proviamo</nome>
-  <descrizione>derer</descrizione>
-  <foto>
-	<immagine src=""></immagine>
-  </foto>
-</padiglione>
-</padiglioni>
+ <evento id="1">
+	<titolo>L&apos;estasi di Alderaan</titolo>
+	<descrizione>Leia col bikini dorato è nell'immaginario collettivo una delle icone di sensualità nel mondo del cinema, in questo evento è possibile ammirare
+	le cosplay di leia in bikini dorato.
+	</descrizione>
+	<foto>
+		<immagine src="/image/leia-bikins.jpg" alt="Cosplay di Leia" /> 
+	</foto>
+ </evento>
+ <evento id="2">
+	<titolo>L&apos;urlo dei mandaloriani"</titolo>
+	<descrizione>Sei un cosplay o amante degli affascinanti e misteriosi mandaloriani, allora non puoi perdere questo evento</descrizione>
+	<foto>
+		<immagine src="/image/mandalorians.jpg" alt="Cosplay in armatura mandaloriana" />
+	</foto>
+ </evento>
+ <evento id="3">
+	<titolo>La legione 501</titolo>
+	<descrizione>La legione 501, detta il pugno di Vader, è la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
+	 della celebre armata!</descrizione>
+	<foto>
+		<immagine src="/image/storm.jpg" alt="Cosplay stormtrooper" />
+	</foto>
+ </evento>
+ <evento id="4">
+	<titolo>Il potere dei sith</titolo>
+	<descrizione>Potenti e tenebrosi, i sith sono i maggiori nemici dei cavalieri Jedi. Che aspetti? Entra e partecipa all'evento</descrizione>
+	<foto>
+		<immagine src="/image/sith.jpg" alt="Una sith" /> 
+	</foto>
+ </evento>
+ <evento id="5">
+	<titolo>La cantina di mos eisley</titolo>
+	<descrizione>Celebre riproduzione della cantina presente in Star Wars IV: Una nuova speranza</descrizione>
+	<foto>
+		<immagine src="/image/cantina.png" alt="Riproduzione della cantina" />
+	</foto>
+ </evento>
+ <evento id="6">
+	<titolo>Area fumetti</titolo>
+	<descrizione>I fumetti sono da sempre una delle punte di diamante del cosidetto Universo Espanso. In questo evento è possibile acquistare i migliori
+	 fumetti dedicati alla saga e aggiornarsi sulle future uscite</descrizione>
+ </evento>
+ <evento id="7">
+	<titolo>Action figure, che passione</titolo>
+	<descrizione>In questa mostra potete ammirare e acquistare le action figures dell'universo di Star Wars</descrizione>
+ </evento>
+ <evento id="8">
+	<titolo>Nuove frontiere</titolo>
+	<descrizione>Cosa ci riserba il futuro, in questo salone vi sarà la discussione sul futuro della saga cinematografica e dei relativi progetti correlati</descrizione>
+ </evento>
+ <evento id="9">
+	<titolo>La storia di Star Wars</titolo>
+	<descrizione>Percorso guidato che illustrerà i punti salienti della esalogia di Star Wars, con un occhio alla serie tv Clone Wars</descrizione>
+ </evento>
+</eventi>

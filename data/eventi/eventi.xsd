@@ -3,26 +3,26 @@
 xmlns="http://www.imperofiere.com"
 targetNamespace="http://www.imperofiere.com" 
 elementFormDefault="qualified" >
-<xs:element name="Eventi" type="TEventi" />
+<xs:element name="eventi" type="TEventi" />
 <xs:complexType name="TEventi">
 	<xs:sequence>
       		<xs:element name="evento" maxOccurs="unbounded" type="TEvento" />
     	</xs:sequence>
 </xs:complexType>
-<xs:complexType name="TPadiglione">
+<xs:complexType name="TEvento">
 	<xs:sequence>
+			<xs:element name="titolo" type="xs:string"/>
       		<xs:element name="descrizione" type="xs:string" />
-      		<xs:element name="nome" type="xs:string" />
       		<xs:element name="foto" type="TFoto" maxOccurs="1"/>
     	</xs:sequence>
-	<xs:attribute name="titolo" type="xs:string" />
+	<xs:attribute name="id" type="xs:string" use="required" />
 </xs:complexType>
 <xs:complexType name="TFoto">
 	<xs:sequence>
 		<xs:element name="immagine" maxOccurs="unbounded"  type="TImmagine" />
     	</xs:sequence>
 </xs:complexType>
-<xs:complexType name="Timmagine">
+<xs:complexType name="TImmagine">
     	<xs:attribute name="src" type="xs:anyURI" use="required" />
     	<xs:attribute name="alt" type="xs:string" />
 </xs:complexType>
