@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Nome Pagina - ImperoFiere</title>
+    <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
+    <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
+    <meta name="description" content="Home Page del sito di ImperoFiere, società fieristica di Rovigo" />
+    <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
+    <meta name="language" content="italian it" />
+<!-- CSS: -->
+    <!--<link type="text/css" rel="stylesheet" href="/style/base.css" media="handheld, screen" />
+    <link type="text/css" rel="stylesheet" href="/style/small.css" media="handheld, screen and (max-width:480px), only screen and (max-device-width:480px)" />
+    <link type="text/css" rel="stylesheet" href="/style/print.css" media="print" />
+    <link type="text/css" rel="stylesheet" href="/style/aural.css" media="aural" />-->
+<!-- JAVASCRIPT: -->
+    <!-- <script type="text/javascript" src="/js/prepareHomePage.js"></script> -->
+<!-- IN CASO VOLESSIMO UN'ICONA: -->
+    <!-- <link rel="icon" href="/img/favicon.ico" type="image/x-icon" /> -->
+  </head>
+  <body>
+    <h1> Comment Book </h1>
+    <p> Lascia qui i tuoi commenti </p>
+    <div id="notifica"><p id="$type\">$message</p></div>
+    <TMPL_IF LEVEL="+0">
+      <form action="commenti.cgi" method="POST">
+        <textarea name="testo" rows="7" cols="40">Scrivi un commento qui!</textarea><br />
+        <input type="hidden" name="username" value="$login{'username'}"/>
+        <input type="hidden" name="operation" value="INSERT" />
+        <input type="submit" value="Invia!" />
+      </form>
+    </TMPL_IF>
+    <TMPL_LOOP NAME=COMMENTI>
+      <div id="commento">
+        <p><b><TMPL_VAR NAME=USERNAME></b>, il <TMPL_VAR NAME=DATETIME> ha scritto:</p>
+        <TMPL_IF LEVEL="2">
+          <form action="commenti.cgi" method="POST">
+            <input type="hidden" name="username" value="$username" />
+            <input type="hidden" name="datetime" value="$datetime" />
+            <input type="hidden" name="operation" value="DELETE" />
+            <input type="submit" value="elimina">
+          </form>
+        </TMPL_IF>
+        <p> <TMPL_VAR NAME=TESTO> </p>
+      </div>
+   </TMPL_LOOP>
+  </body>
+  </html>

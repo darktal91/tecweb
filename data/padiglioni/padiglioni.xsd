@@ -20,15 +20,9 @@
   <xs:complexType name="TPadiglione">
     <xs:sequence>
       <xs:element name="posizione" type="xs:string" />
-      <xs:element name="eventi" maxOccurs="unbounded" type="TEvento" />
+      <xs:element name="evento" type="xs:string" />
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" />
-  </xs:complexType>
-  
-  <xs:complexType name="TEvento">
-      <xs:attribute name="nome" type="xs:string" />
-      <xs:attribute name="inizio" type="xs:date"/>
-      <xs:attribute name="fine" type="xs:date"/>
   </xs:complexType>
   
 

@@ -1,55 +1,38 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="padiglioni.xsl"?>  
 <padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
 xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
   <!--posizione dell'immagine rispetto a cgi-bin-->
   <img src="padiglioni.jpeg" alt="Mappa della disposizione dei padiglioni"/>
   <padiglione id="A">
     <posizione>Il padiglione A si trova vicino all'entrata ovest, adiacente al padiglione B e di fronte al padiglione H</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+	<evento></evento>
   </padiglione>
   <padiglione id="B">
     <posizione>Il padiglione B si trova vicino all'entrata nord, adiacente al padiglione A e di fronte ai padiglioni C, D ed E</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="C">
     <posizione>Il padiglione C e' raggiungibile facilmente entrando nell'ingresso nord, inoltre si trova vicino ai padiglioni D e B</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="D">
     <posizione>Il padiglione D e' raggiungibile facilmente entrando nell'ingresso nord, e' il secondo padiglione a sinistra successivo al padiglione C.</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="E">
     <posizione>Il padiglione E si trova subito a destra rispetto all'ingresso est</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="F">
     <posizione>Il padiglione F si raggiunge facilmente entrando per l'entrata est, e si trova in mezzo ai padiglioni E e G</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="G">
     <posizione>Il padiglione G e' il primo padiglione a destra entrando per l'entrata si e si trova di fronte al padiglione H</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
   <padiglione id="H">
     <posizione>Il padiglione H si trova subito a destra entrando dall'ingresso ovest e a sinistra entrando dall'ingresso sud</posizione>
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
-    <evento nome="" inizio="" fine="" />
+    <evento></evento>
   </padiglione>
 </padiglioni>
