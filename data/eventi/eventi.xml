@@ -1,5 +1,5 @@
-<?xml version="1.0"?> 
-<eventi xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+<?xml version="1.0"?>
+<eventi xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
  <evento id="1">
 	<titolo>L&apos;estasi di Alderaan</titolo>
@@ -7,14 +7,14 @@ xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
 	le cosplay di leia in bikini dorato.
 	</descrizione>
 	<foto>
-		<immagine src="/image/leia-bikins.jpg" alt="Cosplay di Leia" /> 
+		<img src="../image/leia-bikins.jpg" alt="Cosplay di Leia" />
 	</foto>
  </evento>
  <evento id="2">
 	<titolo>L&apos;urlo dei mandaloriani"</titolo>
 	<descrizione>Sei un cosplay o amante degli affascinanti e misteriosi mandaloriani, allora non puoi perdere questo evento</descrizione>
 	<foto>
-		<immagine src="/image/mandalorians.jpg" alt="Cosplay in armatura mandaloriana" />
+		<img src="/image/mandalorians.jpg" alt="Cosplay in armatura mandaloriana" />
 	</foto>
  </evento>
  <evento id="3">
@@ -22,21 +22,21 @@ xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
 	<descrizione>La legione 501, detta il pugno di Vader, è la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
 	 della celebre armata!</descrizione>
 	<foto>
-		<immagine src="/image/storm.jpg" alt="Cosplay stormtrooper" />
+		<img src="/image/storm.jpg" alt="Cosplay stormtrooper" />
 	</foto>
  </evento>
  <evento id="4">
 	<titolo>Il potere dei sith</titolo>
 	<descrizione>Potenti e tenebrosi, i sith sono i maggiori nemici dei cavalieri Jedi. Che aspetti? Entra e partecipa all'evento</descrizione>
 	<foto>
-		<immagine src="/image/sith.jpg" alt="Una sith" /> 
+		<img src="/image/sith.jpg" alt="Una sith" />
 	</foto>
  </evento>
  <evento id="5">
 	<titolo>La cantina di mos eisley</titolo>
 	<descrizione>Celebre riproduzione della cantina presente in Star Wars IV: Una nuova speranza</descrizione>
 	<foto>
-		<immagine src="/image/cantina.png" alt="Riproduzione della cantina" />
+		<img src="/image/cantina.png" alt="Riproduzione della cantina" />
 	</foto>
  </evento>
  <evento id="6">

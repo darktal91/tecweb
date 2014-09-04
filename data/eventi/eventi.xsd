@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns="http://www.imperofiere.com"
-targetNamespace="http://www.imperofiere.com" 
+targetNamespace="http://www.imperofiere.com"
 elementFormDefault="qualified" >
 <xs:element name="eventi" type="TEventi" />
 <xs:complexType name="TEventi">
@@ -13,13 +13,13 @@ elementFormDefault="qualified" >
 	<xs:sequence>
 			<xs:element name="titolo" type="xs:string"/>
       		<xs:element name="descrizione" type="xs:string" />
-      		<xs:element name="foto" type="TFoto" maxOccurs="1"/>
+      		<xs:element name="foto" type="TFoto" minOccurs="0" maxOccurs="1"/>
     	</xs:sequence>
 	<xs:attribute name="id" type="xs:string" use="required" />
 </xs:complexType>
 <xs:complexType name="TFoto">
 	<xs:sequence>
-		<xs:element name="immagine" maxOccurs="unbounded"  type="TImmagine" />
+		<xs:element name="img" maxOccurs="unbounded"  type="TImmagine" />
     	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="TImmagine">

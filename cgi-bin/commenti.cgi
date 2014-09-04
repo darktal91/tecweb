@@ -5,85 +5,79 @@ use warnings;
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
+use HTML::Template;
 use MyModule;
 
-print "Content-type: text/html\n\n";
-
+#variabili
+my $cgi = new CGI;
 (my $sec, my $min, my $hour, my $mday, my $mon, my $year, my @rest) = localtime();
 $year +=1900;
 $min = sprintf("%02d", $min); # aggiunge lo zero se $min < 10
 $hour = sprintf("%02d", $hour);
 $mday = sprintf("%02d", $mday);
 $mon = sprintf("%02d", $mon);
-
 my $currentdatetime = "$mday/$mon/$year alle $hour:$min";
-
-
-# - LOGIN & HEADER
-#	$login{"level"} indica il livello di accessibilita' dell'utente ( 0 = non loggato, 1 = utente, 2 = admin)
-
-my %login = MyModule::stampa_header();
-
-
-
-# - INTRO
-
-print <<EOF;
-<h1> Comment Book </h1>
-<p> Lascia qui i tuoi commenti </p>
-EOF
-
-
-
+my $key;
+my %input;
+my @errori;
+# variabile dei commenti
+my @messaggi;
+my $admin=0;
+my $autenticato=0;
+my $templateName = 'template/commenti.tmpl';
 # - LETTURA VALORI RICEVUTI (POST)
 #	vengono inseriti nell'hash %input
 
-my $cgi = new CGI;
-my $key;
-my %input;
 if ($cgi->param()) {
   for $key($cgi->param()) {
     $input{$key} = $cgi->param($key);
   }
 }
 
+#	$login{"level"} indica il livello di accessibilita' dell'utente ( 0 = non loggato, 1 = utente, 2 = admin)
 
-
-# - LETTURA FILE HTML
-#	ricerca dei nodi: http://www.perlmonks.org/?node_id=490846
-#	problemi relativi al namespacE: http://www.perlmonks.org/?node_id=531313
-
+my %login = ("username" => "Giammariagianni", "level" => 1);
+if($login{"level"} > 0){
+  $autenticato=1;
+  if($login{"level"}==2){
+    $admin=1;
+  }
+}
 my $file = '../data/commenti/commenti.xml';
 my $parser = XML::LibXML->new();
+#messaggi errore
+my $parsing_err     = "Operazione di parsing fallita";
+my $access_root_err = "Impossibile accedere alla radice";
 
-my $doc = $parser->parse_file($file) || die (MyModule::notify("error", "Parser fallito!"));
-my $root = $doc->getDocumentElement || die (MyModule::notify("error", "Root non trovata!"));
-$doc->documentElement->setNamespace("http://www.imperofiere.com", "ns") || die (MyModule::notify("error", "Impossibile assegnare il namespace."));
-
-  
+my $doc = $parser->parse_file($file) || die ($parsing_err);
+my $root = $doc->getDocumentElement || die ($access_root_err);
+$doc->documentElement->setNamespace("http://www.imperofiere.com", "ns");
 
 # - GESTORE ELIMINAZIONE POST
 
 my $query;
 my $commento;
 my $parent;
-
 if ( exists($input{"operation"}) && $input{"operation"} eq "DELETE" ) {
-  if ( $login{"level"} == 2 ) {
-    
-    $query = "//ns:commento[ ns:username/text() = '$input{username}' and ns:datetime/text() = '$input{datetime}' ]"; 
-    
-    $commento = $root->findnodes($query)->get_node(1) || die (MyModule::notify("error", "Il messaggio non esiste oppure e' gia' stato eliminato"));
+  if ( $admin == 1 ) {
+    $query = "//ns:commento[ ns:username/text() = '$input{username}' and ns:datetime/text() = '$input{datetime}' ]";
+    $commento = $root->findnodes($query)->get_node(1) ||
+                  die (MyModule::notify("error", "Il messaggio non esiste oppure e' gia' stato eliminato"));
     $parent = $commento->parentNode;
     $parent->removeChild($commento);
-    
     $doc->setEncoding('UTF-8');
     $doc->toFile("commenti.xml", 0) || die (MyModule::notify("error", "Errore salvataggio .xml!"));
     chmod 0664, $doc;
-    MyModule::notify("info", "Messaggio eliminato!");
+    my %row;
+    $row{TIPO} = "info";
+    $row{TESTO} = "Messaggio eliminato!";
+    push(@errori, \%row);
   }
   else {
-    MyModule::notify("error", "Non si dispone dell'autorizzazione per eliminare questo commento.");
+    my %row;
+    $row{TIPO} = "error";
+    $row{TESTO} = "Non si dispone dell'autorizzazione per eliminare questo commento.";
+    push(@errori, \%row);
   }
 }
 
@@ -93,35 +87,31 @@ if ( exists($input{"operation"}) && $input{"operation"} eq "DELETE" ) {
 
 if ( exists($input{"operation"}) && $input{"operation"} eq "INSERT") {
   if ($login{"level"} > 0) {
-
     $query = "//ns:commento[ ns:username/text() = '$input{username}' and ns:datetime/text() = '$currentdatetime' ]";
-    
     $commento = $root->findnodes($query)->get_node(1);
-    
-    # se trova un commento con stesso username e datetime si attiva un filtro antispam 
+    # se trova un commento con stesso username e datetime si attiva un filtro antispam
     if ($commento) {
-      MyModule::notify("error", "Filtro antispam: aspettare un minuto tra l'inserimento di due messaggi.");
+      my %row;
+      $row{TIPO} = "error";
+      $row{TESTO} = "Filtro antispam: aspettare un minuto tra l'inserimento di due messaggi.";
+      push(@errori, \%row);
     }
-    
     # creazione del frammento e inserimento
-    else  {
-    
+    else {
       $commento = "\n  <commento>\n    <username>$input{'username'}</username>
 	\n    <datetime>$currentdatetime</datetime>\n    <testo>$input{'testo'}</testo>\n  </commento>\n";
-
-      my $frammento = $parser->parse_balanced_chunk($commento) || die (MyModule::notify("error", "Commento malformato!"));
-      
+      my $frammento = $parser->parse_balanced_chunk($commento) ||
+                        die (MyModule::notify("error", "Commento malformato!"));
       $query = '/ns:commentbook';
       $parent = $root->findnodes($query)->get_node(1) || die (MyModule::notify("error", "Errore nel recupero del nodo commentbook."));
-      
       # se esistono gia' dei commenti, inserisco quello nuovo per primo
       if ($parent->findnodes('./ns:commento')) {
-	my $first = ${[$parent->findnodes('./ns:commento')]}[0];
-	$parent->insertBefore($frammento, $first);
+	       my $first = ${[$parent->findnodes('./ns:commento')]}[0];
+         $parent->insertBefore($frammento, $first);
       }
       # se non esistono ancora commenti uso appendChild()
       else {
-	$parent->appendChild($frammento) || die (MyModule::notify("error", "Errore nell'inserimento del nuovo nodo."));
+        $parent->appendChild($frammento) || die (MyModule::notify("error", "Errore nell'inserimento del nuovo nodo."));
       }
       # salvataggio del file
       $doc->setEncoding('UTF-8');
@@ -133,60 +123,33 @@ if ( exists($input{"operation"}) && $input{"operation"} eq "INSERT") {
     }
   }
   else {
-    MyModule::notify("error", "Non si dispone dell'autorizzazione per inserire commenti. Effettuare il login.");
+    my %row;
+    $row{TIPO} = "error";
+    $row{TESTO} = "Non si dispone dell'autorizzazione per inserire commenti. Effettuare il login.";
+    push(@errori, \%row);
   }
 }
 
+# - Recupero dei commenti
 
+my @risultati = $root->findnodes('//ns:commento');
 
-# - STAMPA DELLA FORM DI INSERIMENTO
-
-if ($login{"level"} > 0) {
-  print << "eof";
-<form action="commenti.cgi" method="POST">
-  <textarea name="testo" rows="7" cols="40">Scrivi un commento qui!</textarea><br />
-  <input type="hidden" name="username" value="$login{'username'}"/>
-  <input type="hidden" name="operation" value="INSERT" />
-  <input type="submit" value="Invia!" />
-</form>
-eof
+foreach (@risultati) {
+  my %row;
+  my $uz = $_->findnodes('./ns:username');
+  my $date = $_->findnodes('./ns:datetime');
+  my $texz = $_->findnodes('./ns:testo');
+  $row{USERNAME} = $uz->string_value();
+  $row{DATETIME} = $date->string_value();
+  $row{TESTO} = $texz->string_value();
+  $row{ADMIN} = $admin;
+  push(@messaggi, \%row);
 }
 
-
-
-# - STAMPA DELLA LISTA DEI COMMENTI
-
-my $results = $root->findnodes('//ns:commento');
-
-foreach $commento ($results->get_nodelist) {
-  
-  my $username = $commento->findnodes('./ns:username/text()');
-  my $datetime = $commento->findnodes('./ns:datetime/text()');
-  my $testo = $commento->findnodes('./ns:testo/text()');
-  
-  print << "eof";
-<div id="commento">
-<p><b>$username</b>, il $datetime ha scritto:</p>
-eof
-# bottone per l'eliminazione (se amministratore)
-  if ($login{"level"} == 2) {
-    print << "eof";
-<form action="commenti.cgi" method="POST">
-  <input type="hidden" name="username" value="$username" />
-  <input type="hidden" name="datetime" value="$datetime" />
-  <input type="hidden" name="operation" value="DELETE" />
-  <input type="submit" value="elimina">
-</form>
-eof
-  }
-  print << "eof";
-<p> $testo </p>
-</div>
-eof
-}
-
-
-
-# - FOOTER
-
-MyModule::stampa_footer();
+my $template = HTML::Template->new(filename=>$templateName);
+$template->param(ERRORI => \@errori);
+$template->param(COMMENTI => \@messaggi);
+$template->param(AUTENTICATO => \$autenticato);
+$template->param(USER => $login{"username"});
+HTML::Template->config(utf8 => 1);
+print "Content-Type: text/html\n\n", $template->output;

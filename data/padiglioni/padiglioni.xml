@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+<padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
   <!--posizione dell'immagine rispetto a cgi-bin-->
-  <img src="padiglioni.jpeg" alt="Mappa della disposizione dei padiglioni"/>
+  <img src="../image/padiglioni.jpeg" alt="Mappa della disposizione dei padiglioni"/>
   <padiglione id="A">
     <posizione>Il padiglione A si trova vicino all'entrata ovest, adiacente al padiglione B e di fronte al padiglione H</posizione>
 	<evento></evento>

@@ -13,10 +13,6 @@ my $file_padiglioni = "../data/padiglioni/padiglioni.xml";
 my $ns_uri  = 'http://www.imperofiere.com';
 my $ns_abbr = 'p';
 
-
-my $template     = HTML::Template->new(filename=>$templateName);
-
-
 #espressioni xpath
 my $posizioni = "/${ns_abbr}:padiglioni/${ns_abbr}:padiglione";
 my $imgPadiglioni ="/${ns_abbr}:padiglioni/${ns_abbr}:img";
@@ -29,7 +25,7 @@ my $access_root_err = "Impossibile accedere alla radice";
 my $parser = XML::LibXML->new();
 
 #parser del documento
-my $doc = $parser->parse_file($file_acquisti) || die($parsing_err);
+my $doc = $parser->parse_file($file_padiglioni) || die($parsing_err);
 
 #recupero l'elemento radice
 my $root_pad = $doc->getDocumentElement || die($access_root_err);
@@ -39,15 +35,29 @@ $doc->documentElement->setNamespace($ns_uri,$ns_abbr);
 
 my @padiglioni = $root_pad->findnodes($posizioni);
 my @imgPadiglioni = $root_pad->findnodes($imgPadiglioni);
-my $src=$imgPadiglioni{"src"};
-my $alt=$imgPadiglioni{"alt"};
+my $img="";
+my @result;
 
-my $img="<img src=\"${src}\" alt=\"${alt}\" />"
-	 
-## passo i parametri al template
+foreach (@imgPadiglioni) {
+	$img= $_->toString();
+}
 
+# prendo i nodi ottenuti e li trasformo in modo da essere compatibili con il template
+foreach(@padiglioni){
+	my $id = $_->findnodes("./\@id");
+	my $posizione = $_->findnodes("./${ns_abbr}:posizione");
+	my $evento = $_->findnodes("./${ns_abbr}:evento");
+	my %row;
+	$row{ID} = $id->string_value();
+	$row{POSIZIONE} = $posizione->string_value();
+	$row{EVENTO}=$evento->string_value();
+	push(@result, \%row);
+}
+
+# passo i parametri al template
+my $template = HTML::Template->new(filename=>$templateName);
 $template->param(IMMAGINE => $img);
-$template->param(PADIGLIONI => @padiglioni);
+$template->param(PADIGLIONI => \@result);
 
 HTML::Template->config(utf8 => 1);
 print "Content-Type: text/html\n\n", $template->output;

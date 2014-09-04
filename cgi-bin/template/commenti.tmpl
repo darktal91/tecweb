@@ -3,10 +3,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Nome Pagina - ImperoFiere</title>
-    <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
+    <meta name="title" content="Commenti - The Empire Con | Organizziamo e ospitiamo i vostri eventi fieristici" />
     <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
-    <meta name="description" content="Home Page del sito di ImperoFiere, società fieristica di Rovigo" />
-    <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
+    <meta name="description" content="Home Page del sito di The Empire Con, società fieristica di Rovigo" />
+    <meta name="keywords" content="commenti, EmpireCon, fiera, Rovigo, Impero, Empire" />
     <meta name="language" content="italian it" />
 <!-- CSS: -->
     <!--<link type="text/css" rel="stylesheet" href="/style/base.css" media="handheld, screen" />
@@ -21,11 +21,15 @@
   <body>
     <h1> Comment Book </h1>
     <p> Lascia qui i tuoi commenti </p>
-    <div id="notifica"><p id="$type\">$message</p></div>
-    <TMPL_IF LEVEL="+0">
+    <div id="notifica">
+      <TMPL_LOOP NAME=ERRORI>
+        <p id="<TMPL_VAR NAME=TIPO ESCAPE=HTML>"><TMPL_VAR NAME=TESTO></p>
+      </TMPL_LOOP>
+    </div>
+    <TMPL_IF NAME=AUTENTICATO>
       <form action="commenti.cgi" method="POST">
         <textarea name="testo" rows="7" cols="40">Scrivi un commento qui!</textarea><br />
-        <input type="hidden" name="username" value="$login{'username'}"/>
+        <input type="hidden" name="username" value="<TMPL_VAR NAME=USER ESCAPE=HTML>"/>
         <input type="hidden" name="operation" value="INSERT" />
         <input type="submit" value="Invia!" />
       </form>
@@ -33,10 +37,10 @@
     <TMPL_LOOP NAME=COMMENTI>
       <div id="commento">
         <p><b><TMPL_VAR NAME=USERNAME></b>, il <TMPL_VAR NAME=DATETIME> ha scritto:</p>
-        <TMPL_IF LEVEL="2">
+        <TMPL_IF ADMIN>
           <form action="commenti.cgi" method="POST">
-            <input type="hidden" name="username" value="$username" />
-            <input type="hidden" name="datetime" value="$datetime" />
+            <input type="hidden" name="username" value="<TMPL_VAR USERNAME ESCAPE=HTML>" />
+            <input type="hidden" name="datetime" value="<TMPL_VAR DATETIME ESCAPE=HTML>" />
             <input type="hidden" name="operation" value="DELETE" />
             <input type="submit" value="elimina">
           </form>

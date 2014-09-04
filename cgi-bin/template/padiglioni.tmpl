@@ -30,8 +30,7 @@
 					</TMPL_IF>
 				</ul>
 			</div>
-            <div id="contenuto">
-				<xsl:apply-templates select="padiglioni"/>
+        <div id="contenuto">
 				<div id="mappa"><TMPL_VAR IMMAGINE /></div>
 				<table id="padiglioni" summary="In questa tabella sono contenuti la lista dei padiglioni, la relativa posizione e l'eventuale evento in corso per padiglione">
 					<thead>
@@ -44,9 +43,9 @@
 					<tbody>
 						<TMPL_LOOP NAME=PADIGLIONI>
 						<tr>
-							<td><TMPL_VAR NAME=@ID></td>
-							<td><TMPL_VAR NAME=POSIZIONI></td>
-							<td><TMPL_VAR NAME=EVENTO</td>
+							<td><TMPL_VAR ID></td>
+							<td><TMPL_VAR POSIZIONE></td>
+							<td><TMPL_VAR EVENTO></td>
 						</tr>
 						</TMPL_LOOP>
 					</tbody>
