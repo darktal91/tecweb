@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<eventi xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
+<eventi xmlns="http://www.empirecon.it" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:schemaLocation="http://www.empirecon.it eventi.xsd">
  <evento id="1">
 	<titolo>L&apos;estasi di Alderaan</titolo>
-	<descrizione>Leia col bikini dorato è nell'immaginario collettivo una delle icone di sensualità nel mondo del cinema, in questo evento è possibile ammirare
+	<descrizione>Leia col bikini dorato &egrave; nell&apos;immaginario collettivo una delle icone di sensualità nel mondo del cinema, in questo evento &egrave; possibile ammirare
 	le cosplay di leia in bikini dorato.
 	</descrizione>
 	<foto>
@@ -14,39 +14,39 @@ xs:schemaLocation="http://www.imperofiere.com eventi.xsd">
 	<titolo>L&apos;urlo dei mandaloriani"</titolo>
 	<descrizione>Sei un cosplay o amante degli affascinanti e misteriosi mandaloriani, allora non puoi perdere questo evento</descrizione>
 	<foto>
-		<img src="/image/mandalorians.jpg" alt="Cosplay in armatura mandaloriana" />
+		<img src="../image/mandalorians.jpg" alt="Cosplay in armatura mandaloriana" />
 	</foto>
  </evento>
  <evento id="3">
 	<titolo>La legione 501</titolo>
-	<descrizione>La legione 501, detta il pugno di Vader, è la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
+	<descrizione>La legione 501, detta il pugno di Vader, &egrave; la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
 	 della celebre armata!</descrizione>
 	<foto>
-		<img src="/image/storm.jpg" alt="Cosplay stormtrooper" />
+		<img src="../image/storm.jpg" alt="Cosplay stormtrooper" />
 	</foto>
  </evento>
  <evento id="4">
 	<titolo>Il potere dei sith</titolo>
-	<descrizione>Potenti e tenebrosi, i sith sono i maggiori nemici dei cavalieri Jedi. Che aspetti? Entra e partecipa all'evento</descrizione>
+	<descrizione>Potenti e tenebrosi, i sith sono i maggiori nemici dei cavalieri Jedi. Che aspetti? Entra e partecipa all&apos;evento</descrizione>
 	<foto>
-		<img src="/image/sith.jpg" alt="Una sith" />
+		<img src="../image/sith.jpg" alt="Una sith" />
 	</foto>
  </evento>
  <evento id="5">
 	<titolo>La cantina di mos eisley</titolo>
 	<descrizione>Celebre riproduzione della cantina presente in Star Wars IV: Una nuova speranza</descrizione>
 	<foto>
-		<img src="/image/cantina.png" alt="Riproduzione della cantina" />
+		<img src="../image/cantina.png" alt="Riproduzione della cantina" />
 	</foto>
  </evento>
  <evento id="6">
 	<titolo>Area fumetti</titolo>
-	<descrizione>I fumetti sono da sempre una delle punte di diamante del cosidetto Universo Espanso. In questo evento è possibile acquistare i migliori
+	<descrizione>I fumetti sono da sempre una delle punte di diamante del cosidetto Universo Espanso. In questo evento &egrave; possibile acquistare i migliori
 	 fumetti dedicati alla saga e aggiornarsi sulle future uscite</descrizione>
  </evento>
  <evento id="7">
 	<titolo>Action figure, che passione</titolo>
-	<descrizione>In questa mostra potete ammirare e acquistare le action figures dell'universo di Star Wars</descrizione>
+	<descrizione>In questa mostra potete ammirare e acquistare le action figures dell&apos;universo di Star Wars</descrizione>
  </evento>
  <evento id="8">
 	<titolo>Nuove frontiere</titolo>

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<padiglioni xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
-xs:schemaLocation="http://www.imperofiere.com padiglioni.xsd">
+<padiglioni xmlns="http://www.empirecon.it" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:schemaLocation="http://www.empirecon.it padiglioni.xsd">
   <!--posizione dell'immagine rispetto a cgi-bin-->
   <img src="../image/padiglioni.jpeg" alt="Mappa della disposizione dei padiglioni"/>
   <padiglione id="A">

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://www.imperofiere.com"
-  targetNamespace="http://www.imperofiere.com" 
+  xmlns="http://www.empirecon.it"
+  targetNamespace="http://www.empirecon.it" 
   elementFormDefault="qualified" >
   <xs:element name="padiglioni" type="TPadiglioni" />
-    
+
   <xs:complexType name="TPadiglioni">
     <xs:sequence>
       <xs:element name="img" type="TMappa" />
       <xs:element name="padiglione" maxOccurs="unbounded" type="TPadiglione" />
     </xs:sequence>
   </xs:complexType>
-  
+
   <xs:complexType name="TMappa">
     <xs:attribute name="src" type="xs:anyURI" use="required" />
     <xs:attribute name="alt" type="xs:string" />
-  </xs:complexType>  
-  
+  </xs:complexType>
+
   <xs:complexType name="TPadiglione">
     <xs:sequence>
       <xs:element name="posizione" type="xs:string" />
@@ -24,6 +24,6 @@
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" />
   </xs:complexType>
-  
+
 
 </xs:schema>

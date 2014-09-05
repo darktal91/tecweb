@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+  <TMPL_VAR HEADER>
+  <body>
+  <div id="prettyimage"></div>
+  <div id="header"><img id="logo" src="images/logo.gif" alt="EmpireCon"/></div>
+  <div id="contenuto">
+    <div id="posizione">
+       Ti trovi in: <span id="nomeposizione"><TMPL_VAR PATH></span>
+        <a id="salta" href="#corpo">Salta al contenuto.</a>
+    </div>
+    <div id="bar">
+       <div id="login">
+          <!-- <TMPL_VAR ERRORE> -->
+           <form method="post" action="login.cgi">
+              <fieldset>
+                 <legend>Login: inserisci i tuoi dati.</legend>
+                 <p><label for="username">Username:</label>
+                 <input class="field" type="text" name="username" id="username" value="" size="16" /></p>
+                 <p><label for="password">Password:</label>
+                 <input class="field" type="password" name="password" id="password" value="" size="16" /></p>
+                 <p><input class="button" type="submit" value="Login" />
+                 <a class="button" accesskey="r" href="cgi-bin/registrazione.cgi">Registrati</a></p>
+              </fieldset>
+<!-- <input type="hidden" name="referrer" value="<TMPL_VAR RIFE ESCAPE=HTML>" />
+<input type="hidden" name="submitted" value="1" /> -->
+          </form>
+     </div>
+     <div id="nav">
+        <ul>
+           <li><a accesskey="h" href="../index.html">Home</a></li>
+           <li><a accesskey="e" href="cgi-bin/eventi.cgi">Eventi</a></li>
+           <li><a accesskey="p" href="cgi-bin/photogallery.cgi">Photo Gallery</a></li>
+           <li><a accesskey="a" href="cgi-bin/biglietti.cgi">Acquista biglietti</a></li>
+           <li><a accesskey="p" href="cgi-bin/padiglioni.cgi">Padiglioni</a></li>
+           <li><a accesskey="p" href="cgi-bin/commenti.cgi">Commenti</a></li>
+           <li><a accesskey="d" href="cgi-bin/dovesiamo.cgi">Dove siamo</a></li>
+           <li><a accesskey="c" href="cgi-bin/contatti.cgi">Contatti</a></li>
+        </ul>
+    </div>
+  </div>
+  <div id="corpo">
+      <TMPL_VAR CONTENUTO>
+  </div>
+  <TMPL_VAR FOOTER>
+  </div>
+</body>
+</html>
