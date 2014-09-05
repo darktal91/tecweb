@@ -3,7 +3,7 @@
   <TMPL_VAR HEADER>
   <body>
   <div id="prettyimage"></div>
-  <div id="header"><img id="logo" src="images/logo.gif" alt="EmpireCon"/></div>
+  <div id="header"><img id="logo" src="../images/logo.gif" alt="EmpireCon"/></div>
   <div id="contenuto">
     <div id="posizione">
        Ti trovi in: <span id="nomeposizione"><TMPL_VAR PATH></span>
@@ -29,13 +29,16 @@
      <div id="nav">
         <ul>
            <li><a accesskey="h" href="../index.html">Home</a></li>
-           <li><a accesskey="e" href="cgi-bin/eventi.cgi">Eventi</a></li>
-           <li><a accesskey="p" href="cgi-bin/photogallery.cgi">Photo Gallery</a></li>
-           <li><a accesskey="a" href="cgi-bin/biglietti.cgi">Acquista biglietti</a></li>
-           <li><a accesskey="p" href="cgi-bin/padiglioni.cgi">Padiglioni</a></li>
-           <li><a accesskey="p" href="cgi-bin/commenti.cgi">Commenti</a></li>
-           <li><a accesskey="d" href="cgi-bin/dovesiamo.cgi">Dove siamo</a></li>
-           <li><a accesskey="c" href="cgi-bin/contatti.cgi">Contatti</a></li>
+           <li><a accesskey="e" href="eventi.cgi">Eventi</a></li>
+           <li><a accesskey="p" href="photogallery.cgi">Photo Gallery</a></li>
+           <li><a accesskey="a" href="biglietti.cgi">Acquista biglietti</a></li>
+           <li><a accesskey="p" href="padiglioni.cgi">Padiglioni</a></li>
+           <li><a accesskey="p" href="commenti.cgi">Commenti</a></li>
+           <li><a accesskey="d" href="dovesiamo.cgi">Dove siamo</a></li>
+           <li><a accesskey="c" href="contatti.cgi">Contatti</a></li>
+           <TMPL_IF UTENTE>
+             <li><a accesskey="u" href="../areautente.html">Il mio account</a></li>
+           </TMPL_IF>
         </ul>
     </div>
   </div>

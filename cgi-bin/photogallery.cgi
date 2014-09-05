@@ -8,9 +8,12 @@ use HTML::Template;
 ## creazione ed inizializzazione delle variabili private
 
 my $page = new CGI;
-my $templateName = 'template/foto.tmpl';
+my $templatePage = "template/page.tmpl";
+my $templateHeader = "template/header.tmpl";
+my $templateFooter = "template/footer.tmpl";
+my $templateContent= "template/bodies/foto.tmpl";
 my $file_eventi = "../data/eventi/eventi.xml";
-my $ns_uri  = 'http://www.imperofiere.com';
+my $ns_uri  = 'http://www.empirecon.it';
 my $ns_abbr = 'p';
 my @result;
 #espressioni xpath
@@ -52,8 +55,17 @@ foreach(@eventi){
 }
 
 # passo i parametri al template
-my $template = HTML::Template->new(filename=>$templateName);
-$template->param(LEFOTO => \@result);
+my $template = HTML::Template->new(filename=>$templatePage);
+$template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
+$template->param(PATH=>"Home >> Commenti");
+$template->param(UTENTE=>0);
+$template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
+$template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);
+#compilazione template
+my $tempF = new  HTML::Template(scalarref => \$template->output());
+$tempF->param(PAGE => "Photo Gallery");
+$tempF->param(KEYWORD => "PhotoGallery,foto,EmpireCon, fiera, Rovigo, Impero,Empire");
+$tempF->param(LEFOTO => \@result);
 
 HTML::Template->config(utf8 => 1);
-print "Content-Type: text/html\n\n", $template->output;
+print "Content-Type: text/html\n\n", $tempF->output;

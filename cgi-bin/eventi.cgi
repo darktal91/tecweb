@@ -10,9 +10,12 @@ use HTML::Template;
 # creazione delle variabili dello script
 
 my $page = new CGI;
-my $templateName = "template/eventi.tmpl";
+my $templatePage = "template/page.tmpl";
+my $templateHeader = "template/header.tmpl";
+my $templateFooter = "template/footer.tmpl";
+my $templateContent= "template/bodies/eventi.tmpl";
 my $file_evento = "../data/eventi/eventi.xml";
-my $ns_uri  = 'http://www.imperofiere.com';
+my $ns_uri  = 'http://www.empirecon.it';
 my $ns_abbr = 'e';
 
 #espressioni xpath
@@ -53,9 +56,18 @@ foreach(@events){
   push(@result, \%row);
 }
 
-# passo i parametri al template
-my $template = HTML::Template->new(filename=>$templateName);
-$template->param(EVENTI => \@result);
+# preparo la pagina usando i vari template
+my $template = HTML::Template->new(filename=>$templatePage);
+$template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
+$template->param(PATH=>"Home >> Eventi");
+$template->param(UTENTE=>0);
+$template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
+$template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);
+#compilazione template
+my $tempF = new  HTML::Template(scalarref => \$template->output());
+$tempF->param(PAGE => "Eventi");
+$tempF->param(KEYWORD => "eventi, EmpireCon, fiera, Rovigo, Impero,Empire");
+$tempF->param(EVENTI => \@result);
 
 HTML::Template->config(utf8 => 1);
-print "Content-Type: text/html\n\n", $template->output;
+print "Content-Type: text/html\n\n", $tempF->output;

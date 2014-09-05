@@ -8,9 +8,12 @@ use HTML::Template;
 ## creazione ed inizializzazione delle variabili private
 
 my $page = new CGI;
-my $templateName = 'template/padiglioni.tmpl';
+my $templatePage = "template/page.tmpl";
+my $templateHeader = "template/header.tmpl";
+my $templateFooter = "template/footer.tmpl";
+my $templateContent= "template/bodies/padiglioni.tmpl";
 my $file_padiglioni = "../data/padiglioni/padiglioni.xml";
-my $ns_uri  = 'http://www.imperofiere.com';
+my $ns_uri  = 'http://www.empirecon.it';
 my $ns_abbr = 'p';
 
 #espressioni xpath
@@ -54,10 +57,19 @@ foreach(@padiglioni){
 	push(@result, \%row);
 }
 
-# passo i parametri al template
-my $template = HTML::Template->new(filename=>$templateName);
-$template->param(IMMAGINE => $img);
-$template->param(PADIGLIONI => \@result);
+# preparo la pagina usando i vari template
+my $template = HTML::Template->new(filename=>$templatePage);
+$template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
+$template->param(PATH=>"Home >> Padiglioni");
+$template->param(UTENTE=>0);
+$template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
+$template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);
+#compilazione template
+my $tempF = new  HTML::Template(scalarref => \$template->output());
+$tempF->param(PAGE => "Padiglioni");
+$tempF->param(KEYWORD => "padiglioni, EmpireCon, fiera, Rovigo, Impero,Empire");
+$tempF->param(IMMAGINE => $img);
+$tempF->param(PADIGLIONI => \@result);
 
 HTML::Template->config(utf8 => 1);
-print "Content-Type: text/html\n\n", $template->output;
+print "Content-Type: text/html\n\n", $tempF->output;
