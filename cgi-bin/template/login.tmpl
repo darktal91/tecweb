@@ -1,0 +1,15 @@
+<TMPL_VAR ERRORE>
+<form method="post" action="login.cgi">
+  <fieldset>
+    <ul class="form">
+	  <legend>Login:</legend>
+	  <li xml:lang="en"><label for="username">Username:</label>
+	  <input type="text" name="username" id="username" value="" size="16"/></li>
+    <li xml:lang="en"><label for="password">Password:</label>
+	  <input type="password" name="password" id="password" value="" size="16" /></li>
+	  </ul>
+	  </fieldset>
+	  <input type="submit" value="Procedi" />
+	  <input type="hidden" name="referrer" value="<TMPL_VAR RIFE ESCAPE=HTML>" />
+	  <input type="hidden" name="submitted" value="1" />
+</form>

@@ -7,8 +7,26 @@ use Digest::SHA qw(sha256_hex);
 use HTML::Template;
 
 my $page = new CGI;
+my $ns_uri  = 'http://www.empirecon.it';
+my $filedati = "../data/utenti/utenti.xml";
 
-my $filedati = "../data/utenti.xml";
+my $templatePage = "template/page.tmpl";
+my $templateHeader = "template/header.tmpl";
+my $templateFooter = "template/footer.tmpl";
+my $templateContent= "template/bodies/registrazione.tmpl";
+
+my $temp = HTML::Template->new(filename=>$templatePage);
+#compongo il template finale con i sottotemplate
+$temp->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
+$temp->param(PATH=>"Home >> Registrazione");
+$temp->param(UTENTE=>0);
+$temp->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
+$temp->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);
+
+#compilazione template
+my $template = new  HTML::Template(scalarref => \$temp->output());
+$template->param(PAGE => "Registrazione");
+$template->param(KEYWORD => "registrazione, EmpireCon, fiera, Impero, Star Wars, convention");
 
 #creo il parser
 my $parser = XML::LibXML -> new();
@@ -18,18 +36,19 @@ my $doc = $parser -> parse_file($filedati) || die ("operazione di parsificazione
 
 #leggo la radice
 my $root = $doc->getDocumentElement || die("Accesso alla radice fallito.");
+$doc->documentElement->setNamespace($ns_uri);
 
 sub chk_username {
   my $x = lc($_[0]);
   if ($x eq "") {
     $errori{"nickname"} = 1;
-    $sterr .= "L'username non può essere vuoto.<br />";
+    $sterr .= "Il campo <span xml:lang=\"en\">username</span> non può essere vuoto.<br />";
   }
   else {
     @usernames = $root->getElementsByTagName("nickname");
     if (grep { $x eq lc($_->getFirstChild->getData) } @usernames) {
       $errori{"nickname"} = 1;
-      $sterr .= "L'username inserito è già esistente.<br />";
+      $sterr .= "Lo <span xml:lang=\"en\">username</span> inserito è già esistente.<br />";
     }
   }
 }
@@ -37,18 +56,18 @@ sub chk_username {
 sub chk_pwd {
   my $p = $_[0];
   my $c = $_[1];
-  
+
   if ($p eq "") {
     $errori{"password"} = 1;
-    $sterr .= "Il campo password non può essere vuoto.<br />";
+    $sterr .= "Il campo <span xml:lang=\"en\">password</span> non può essere vuoto.<br />";
   }
   elsif ($p ne $c) {
     $errori{"password"} = 1;
-    $sterr .= "La due password inserite non corrispondono.<br />";
+    $sterr .= "La due <span xml:lang=\"en\">password</span> inserite non corrispondono.<br />";
   }
   elsif (length($p) < 8) {
     $errori{"password"} = 1;
-    $sterr .= "Password troppo corta, sono necessari almeno 8 caratteri.<br />";
+    $sterr .= "<span xml:lang=\"en\">Password</span> troppo corta, sono necessari almeno 8 caratteri.<br />";
   }
 }
 
@@ -83,24 +102,24 @@ sub chk_numero {
 sub chk_citta {
   if ($_[0]eq "") {
     $errori{"citta"} = 1;
-    $sterr .= "Il campo citta non può essere vuoto.<br />";
+    $sterr .= "Il campo città non può essere vuoto.<br />";
   }
 }
 
 
 sub chk_datanascita {
   my $d = $_[0];
-  
+
   if ($d eq "") {
     $errori{"datanascita"} = 1;
     $sterr .= "Il campo data di nascita non può essere vuoto.<br />";
   }
-  if ($d !~ /^((19|20)\d{2})\-(0[1-9]|1[012])-(0[1-9]|[12]\d|3[01])$/) { 
+  if ($d !~ /^((19|20)\d{2})\-(0[1-9]|1[012])-(0[1-9]|[12]\d|3[01])$/) {
 #   la data non ha un formato valido
     $errori{"datanascita"} = 1;
     $sterr .= "Data inserita non valida.<br />";
   }
-  else { #la data è nel formato corretto. 
+  else { #la data è nel formato corretto.
     #controllo sensatezza
     my($cd, $cm, $cy)=(localtime())[3,4,5];
     $cm += 1;
@@ -131,7 +150,7 @@ sub chk_datanascita {
 	  $errori{"datanascita"} = 1;
 	  $sterr .= "Data inserita non valida.<br />";
 	}
-      } 
+      }
     }
   }
 }
@@ -147,7 +166,7 @@ sub chk_provincia {
     unless (grep {$x eq $_} @province) {
       $errori{"provincia"} = 1;
       $sterr .= "Provincia inserita non valida.<br />";
-    } 
+    }
   }
 }
 
@@ -167,11 +186,11 @@ sub chk_email {
   my $x = $_[0];
   if ($x eq "") {
     $errori{"email"} = 1;
-    $sterr .= "Il campo email non può essere vuoto.<br />";
+    $sterr .= "Il campo <span xml:lang=\"en\">email</span> non può essere vuoto.<br />";
   }
   elsif ($x !~ /^([\w\.\-]+)@([A-Za-z0-9\.\-]*[a-zA-Z0-9])\.([a-zA-Z]{2,4})$/) {
     $errori{"email"} = 1;
-    $sterr .= "email inserita non valida.<br />";
+    $sterr .= "<span xml:lang=\"en\">email</span> inserita non valida.<br />";
   }
 }
 
@@ -217,14 +236,11 @@ if($submitted == 1) {
   &chk_citta($citta);
   &chk_provincia($provincia);
   &chk_cap($cap);
-  &chk_email($email);  
+  &chk_email($email);
   unless (grep {$_ == 1} values %errori) {
     $ok = 1;
   }
 }
-
-# creo il link al template
-my $template = HTML::Template->new(filename => 'registrazione.tmpl');
 
 if ($ok == 0) {
   $template->param(OK => 0);
@@ -243,7 +259,7 @@ if ($ok == 0) {
 else {
   my $hashpwd = sha256_hex("$password");
   $provincia = uc($provincia);
-  
+
   #creo frammento da aggiungere
   my $frammento = "\t<utente>
 \t\t<nickname>$username</nickname>
@@ -267,7 +283,7 @@ else {
   $root->appendChild($newnodo) || die ("non riesco a trovare il padre");
 
   $doc->toFile($filedati);
-  
+
   $template->param(OK => 1);
 }
 

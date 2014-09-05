@@ -1,0 +1,86 @@
+<h2> Utente: <TMPL_VAR USERNAME></h2>
+	<TMPL_IF ZERO>
+	  <dl>
+	    <dt>Nome: <TMPL_VAR NOME></dt>
+	    <dt>Cognome: <TMPL_VAR COGNOME></dt>
+	    <dt>Data di nascita: <TMPL_VAR DATANASCITA></dt>
+	    <dt>Indirizzo:</dt>
+	      <dd>Via: <TMPL_VAR VIA></dd>
+	      <dd>Numero: <TMPL_VAR NUMERO></dd>
+	      <dd>Città: <TMPL_VAR CITTA></dd>
+	      <dd>Provincia: <TMPL_VAR PROVINCIA></dd>
+	      <dd>CAP: <TMPL_VAR CAP></dd>
+	    <dt><span xml:lang="en">Email:</span> <TMPL_VAR EMAIL></dt>
+	  </dl>
+	  <a href="areautente.cgi?modifica=1">Modifica dati personali</a>
+	  <a href="areautente.cgi?modifica=2">Imposta nuova password</a>
+	<TMPL_ELSE>
+	  <TMPL_IF UNO>
+	    <TMPL_IF OK>
+	      Dati personali modificati con successo. <br />
+	      <a href="areautente.cgi">Torna indietro</a>
+	    <TMPL_ELSE>
+	      <TMPL_VAR STRERR>
+	      <form method="post" action="areautente.cgi?modifica=1">
+		<fieldset>
+		  <legend>Modifica dati personali</legend>
+		  <ul class="form">
+		    <li><label for="nome">Nome:</label>
+		    <input type="text" name="nome" id="nome" value="<TMPL_VAR NOME ESCAPE=HTML>" /></li>
+
+		    <li><label for="cognome">Cognome:</label>
+		    <input type="text" name="cognome" id="cognome" value="<TMPL_VAR COGNOME ESCAPE=HTML>" /></li>
+
+		    <li><label for="datanascita">Data di nascita:</label>
+		    <input type="text" name="datanascita" id="datanascita" value="<TMPL_VAR DATANASCITA ESCAPE=HTML>" size="10" title="formato AAAA-MM-GG" /> (aaaa-mm-gg)</li>
+
+		    <li><label for="via">Via:</label>
+		    <input type="text" name="via" id="via" value="<TMPL_VAR VIA ESCAPE=HTML>" size="30" />&nbsp
+
+		    <label for="numero">N°:</label>
+		    <input type="text" name="numero" id="numero" value="<TMPL_VAR NUMERO ESCAPE=HTML>" size="4" /></li>
+
+		    <li><label for="citta">Città:</label>
+		    <input type="text" name="citta" id="citta" value="<TMPL_VAR CITTA ESCAPE=HTML>" size="25"/>&nbsp
+
+		    <label for="provincia">Provincia:</label>
+		    <input type="text" name="provincia" id="provincia" value="<TMPL_VAR PROVINCIA ESCAPE=HTML>" size="2" />&nbsp
+
+		    <label for="cap">CAP:</label>
+		    <input type="text" name="cap" id="cap" value="<TMPL_VAR CAP ESCAPE=HTML>" size="5" /></li>
+
+		    <li><label for="email" xml:lang="en">Email:</label>
+		    <input type="text" name="email" id="email" value="<TMPL_VAR EMAIL ESCAPE=HTML>" /></li>
+		  </ul>
+		</fieldset>
+		<input type="submit" value="modifica" />
+		<input type="hidden" name="submitted" id="submitted" value="1" />
+		<input type="hidden" name="modifica" id="modifica" value="1" />
+	      </form>
+	    </TMPL_IF>
+	  <TMPL_ELSE>
+	    <TMPL_IF OK>
+	      Password modificata con successo. <br />
+	      <a href="areautente.cgi">Torna indietro</a>
+	    <TMPL_ELSE>
+	      <TMPL_VAR STRERR>
+	      <form method="post" action="areautente.cgi?modifica=2">
+		<fieldset>
+		  <legend>Imposta nuova <span xml:lang="en">password:</span></legend>
+		  <ul class="form">
+		    <li><label for="oldpassword">Vecchia <span xml:lang="en">password:</span></label>
+		    <input type="password" name="oldpassword" id="oldpassword" value="" size="16" /></li>
+
+		    <li><label for="newpassword">Nuova <span xml:lang="en">password:</span></label>
+		    <input type="password" name="newpassword" id="newpassword" value="" size="16" /></li>
+
+		    <li><label for="coldpassword">Conferma nuova <span xml:lang="en">password:</span></label>
+		    <input type="password" name="cnewpassword" id="cnewpassword" value="" size="16" /><li>
+		</fieldset>
+		<input type="submit" value="modifica" />
+		<input type="hidden" name="submitted" id="submitted" value="1" />
+		<input type="hidden" name="modifica" id="modifica" value="2" />
+	      </form>
+	    </TMPL_IF>
+	  </TMPL_IF>
+</TMPL_IF>
