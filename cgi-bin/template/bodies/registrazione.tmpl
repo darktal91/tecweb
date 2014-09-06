@@ -1,65 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Nome Pagina - ImperoFiere</title>
-    <meta name="title" content="Home Page - ImperoFiere | Organizziamo e ospitiamo i vostri eventi fieristici" />
-    <meta name="author" content="Andrea Cardin, Andrea Nalesso, Gabriele Marcomin, Ismaele Gobbo" />
-    <meta name="description" content="Home Page del sito di ImperoFiere, società fieristica di Rovigo" />
-    <meta name="keywords" content="index, ImperoFiere, fiera, Rovigo, Impero" />
-    <meta name="language" content="italian it" />
-  </head>
-  <body>
-    <TMPL_IF OK>
-      Registrazione effettuata con successo!
-    <TMPL_ELSE>
-      <TMPL_VAR ERRORI>
-      <form method="post" action="registrazione.cgi">
-	<fieldset>
-	  <legend>Credenziali di accesso</legend>
-	  <label for="username">Username:</label>
-	  <input type="text" name="username" id="username" value="<TMPL_VAR USERNAME ESCAPE=HTML>" size="16"/><br />
-	  
-	  <label for="password">Password:</label>
-	  <input type="password" name="password" id="password" value="" size="16" /><br />
-	  
-	  <label for="c_password">Conferma password:</label>
-	  <input type="password" name="c_password" id="c_password" value="" size="16" /><br />
-	</fieldset>
-	
-	<fieldset>
-	  <legend>Dati personali</legend>
-	  <label for="nome">Nome:</label>
-	  <input type="text" name="nome" id="nome" value="<TMPL_VAR NOME ESCAPE=HTML>" /><br />
-	  
-	  <label for="cognome">Cognome:</label>
-	  <input type="text" name="cognome" id="cognome" value="<TMPL_VAR COGNOME ESCAPE=HTML>" /><br />
-	  
-	  <label for="datanascita">Data di nascita:</label>
-	  <input type="text" name="datanascita" id="datanascita" value="<TMPL_VAR DATANASCITA ESCAPE=HTML>" size="10" title="formato AAAA-MM-GG" /> (aaaa-mm-gg)<br />
+<TMPL_IF OK>
+	  Registrazione effettuata con successo!
+	<TMPL_ELSE>
+	  <TMPL_VAR ERRORI>
+	  <form method="post" action="registrazione.cgi">
+	    <fieldset>
+	      <ul class="form">
+		<legend>Credenziali di accesso</legend>
+		<li><label for="username"><span xml:lang="en">Username:</span></label>
+		<input type="text" name="username" id="username" value="<TMPL_VAR USERNAME ESCAPE=HTML>" size="16"/></li>
 
+		<li><label for="password"><span xml:lang="en">Password:</span></label>
+		<input type="password" name="password" id="password" value="" size="16" /></li>
 
-	  <label for="via">Via:</label>
-	  <input type="text" name="via" id="via" value="<TMPL_VAR VIA ESCAPE=HTML>" size="30" />&nbsp
-	  
-	  <label for="numero">N°:</label>
-	  <input type="text" name="numero" id="numero" value="<TMPL_VAR NUMERO ESCAPE=HTML>" size="4" /><br />
-	  
-	  <label for="citta">Città:</label>
-	  <input type="text" name="citta" id="citta" value="<TMPL_VAR CITTA ESCAPE=HTML>" size="25"/>&nbsp
-	  
-	  <label for="provincia">Provincia:</label>
-	  <input type="text" name="provincia" id="provincia" value="<TMPL_VAR PROVINCIA ESCAPE=HTML>" size="2" />&nbsp
-	  
-	  <label for="cap">CAP:</label>
-	  <input type="text" name="cap" id="cap" value="<TMPL_VAR CAP ESCAPE=HTML>" size="5" /><br />
+		<li><label for="c_password">Conferma <span xml:lang="en">password:</span></label>
+		<input type="password" name="c_password" id="c_password" value="" size="16" />/li>
+	      </ul>
+	    </fieldset>
 
-	  <label for="email">Email:</label>
-	  <input type="text" name="email" id="email" value="<TMPL_VAR EMAIL ESCAPE=HTML>" /><br />
-	</fieldset>
-	<input type="submit" value="bottone" />
-	<input type="hidden" name="submitted" id="submitted" value="1" />
-      </form>
-    </TMPL_IF>
-  </body>
-</html>
+	    <fieldset>
+	      <legend>Dati personali</legend>
+	      <ul class="form">
+		<li><label for="nome">Nome:</label>
+		<input type="text" name="nome" id="nome" value="<TMPL_VAR NOME ESCAPE=HTML>" /></li>
+
+		<li><label for="cognome">Cognome:</label>
+		<input type="text" name="cognome" id="cognome" value="<TMPL_VAR COGNOME ESCAPE=HTML>" /></li>
+
+		<li><label for="datanascita">Data di nascita:</label>
+		<input type="text" name="datanascita" id="datanascita" value="<TMPL_VAR DATANASCITA ESCAPE=HTML>" size="10" title="formato AAAA-MM-GG" /> (aaaa-mm-gg)</li>
+
+    <li><label for="via">Via:</label>
+		<input type="text" name="via" id="via" value="<TMPL_VAR VIA ESCAPE=HTML>" size="30" />&nbsp
+
+		<label for="numero">N°:</label>
+		<input type="text" name="numero" id="numero" value="<TMPL_VAR NUMERO ESCAPE=HTML>" size="4" /></li>>
+
+		<li><label for="citta">Città:</label>
+		<input type="text" name="citta" id="citta" value="<TMPL_VAR CITTA ESCAPE=HTML>" size="25"/>&nbsp
+
+		<label for="provincia">Provincia:</label>
+		<input type="text" name="provincia" id="provincia" value="<TMPL_VAR PROVINCIA ESCAPE=HTML>" size="2" />&nbsp
+
+		<label for="cap">CAP:</label>
+		<input type="text" name="cap" id="cap" value="<TMPL_VAR CAP ESCAPE=HTML>" size="5" /></li>
+
+		<li><label for="email"><span xml:lang="en">Email</span>:</label>
+		<input type="text" name="email" id="email" value="<TMPL_VAR EMAIL ESCAPE=HTML>" /></li>
+	      </ul>
+	    </fieldset>
+	    <input type="submit" value="Procedi" />
+	    <input type="hidden" name="submitted" id="submitted" value="1" />
+	 </form>
+</TMPL_IF>
