@@ -1,0 +1,23 @@
+<h3>Controllo dei ricavi</h3>
+<table id="ricavi" summary="In questa tabella sono contenuti il numero di biglietti venduti e ricavi totali
+per tipo di biglietto">
+	<thead>
+		<tr>
+			<th scope="col">Tipo</th>
+			<th scope="col">Prezzo unitario</th>
+			<th scope="col">Numero di biglietti venduti</th>
+			<th scope="col">Ricavo totale</th>
+		</tr>
+		</thead>
+		<tbody>
+			<TMPL_LOOP NAME=BIGLIETTI>
+				<tr>
+					<td><TMPL_VAR TIPO></td>
+					<td><TMPL_VAR UNITARIO></td>
+					<td><TMPL_VAR NUMERO></td>
+					<td><TMPL_VAR RICAVI></td>
+				</tr>
+			</TMPL_LOOP>
+		</tbody>
+</table>
+<p>Sono stati venduti <TMPL_VAR NUMERI> biglietti, mentre il ricavo totale è <TMPL_VAR RICAVO></p>

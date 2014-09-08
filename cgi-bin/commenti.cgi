@@ -154,7 +154,7 @@ foreach (@risultati) {
 
 my $template = HTML::Template->new(filename=>$templatePage);
 $template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
-$template->param(PATH=>"Home >> Commenti");
+$template->param(PATH=>"<a href=\"$home\">Home</a> >> Commenti");
 $template->param(UTENTE=>0);
 $template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
 $template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);

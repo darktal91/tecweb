@@ -3,6 +3,7 @@ use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
 use CGI::Session();
+use Encode;
 use HTML::Template;
 
 ## creazione ed inizializzazione delle variabili private
@@ -47,20 +48,40 @@ foreach (@imgPadiglioni) {
 
 # prendo i nodi ottenuti e li trasformo in modo da essere compatibili con il template
 foreach(@padiglioni){
+	#dati da padiglioni
 	my $id = $_->findnodes("./\@id");
 	my $posizione = $_->findnodes("./${ns_abbr}:posizione");
 	my $evento = $_->findnodes("./${ns_abbr}:evento");
 	my %row;
-	$row{ID} = $id->string_value();
-	$row{POSIZIONE} = $posizione->string_value();
-	$row{EVENTO}=$evento->string_value();
+	$row{ID} = encode_utf8($id->string_value());
+	$row{POSIZIONE} = encode_utf8($posizione->string_value());
+	my $RZ=encode_utf8($evento->string_value());
+
+	#prelievo dati da eventi
+	my $fil = "../data/eventi/eventi.xml";
+	my $evs = "/${nz}:eventi/${nz}:evento[\@id=\"$RZ\"]";
+	my $nz = 'e';
+	my $p = XML::LibXML->new();
+	my $d = $p->parse_file($fil) || die($parsing_err);
+	my $r = $d->getDocumentElement || die($access_root_err);
+	$d->documentElement->setNamespace($ns_uri,$nz);
+	my @z = $r->findnodes($evs);
+
+	foreach (@z) {
+		my $zid = $_->findnodes("./\@id");
+		my $zt = $_->findnodes("./${nz}:titolo");
+		$row{IDEVENTO} = "eventi.cgi#i".$zid->string_value();
+		$row{EVENTO} = encode_utf8($zt->string_value());
+	}
+
 	push(@result, \%row);
 }
 
 # preparo la pagina usando i vari template
 my $template = HTML::Template->new(filename=>$templatePage);
 $template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
-$template->param(PATH=>"Home >> Padiglioni");
+my $home="../index.hmtl";
+$template->param(PATH=>"<a href=\"$home\">Home</a> >> Padiglioni");
 $template->param(UTENTE=>0);
 $template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
 $template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);

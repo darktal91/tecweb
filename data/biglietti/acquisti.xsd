@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://www.imperofiere.com"
-  targetNamespace="http://www.imperofiere.com"
+  xmlns="http://www.empirecon.it"
+  targetNamespace="http://www.empirecon.it"
   elementFormDefault="qualified" >
 <xs:element name="acquisti" type="Tacquisti"/>
 
@@ -17,7 +17,7 @@
     </xs:sequence>
     <xs:attributeGroup ref="Ttipologiattr"/>
   </xs:complexType>
-  
+
   <xs:attributeGroup name="Ttipologiattr">
     <xs:attribute name="id" type="Ttipo" use="required" />
     <xs:attribute name="prezzo" type="Tprezzo" use="required" />
@@ -30,13 +30,13 @@
       <xs:enumeration value="gratis" />
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="Tprezzo">
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:complexType name="Tacquisto">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -50,12 +50,12 @@
     <xs:attribute name="datatime" type="xs:dateTime" use="required" />
   </xs:attributeGroup>
 
-  
+
   <!--
   TODO :
-	  attualmente il tipo username è solo una string, non che la cosa mi comodi. 
-  
+	  attualmente il tipo username è solo una string, non che la cosa mi comodi.
+
 	  Da rivedere anche Ttipo: non mi piace l'idea di elencare nello schema i vari tipi di biglietto, al contempo però non è che sia granchè lasciare semplicemente come string il tipo.
   -->
-  
+
 </xs:schema>

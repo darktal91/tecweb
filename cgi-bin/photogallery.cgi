@@ -3,6 +3,7 @@ use CGI;
 use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
 use CGI::Session();
+use Encode;
 use HTML::Template;
 
 ## creazione ed inizializzazione delle variabili private
@@ -49,7 +50,7 @@ foreach(@eventi){
       $rowfoto{IMG}=$Q;
       push(@foto, \%rowfoto);
   }
-  $row{TITOLO} = $id->string_value();
+  $row{TITOLO} = encode_utf8($id->string_value());
   $row{SLIDE} = \@foto;
   push(@result, \%row);
 }
