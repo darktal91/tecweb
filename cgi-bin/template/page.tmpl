@@ -33,11 +33,15 @@
            <li><a accesskey="p" href="photogallery.cgi">Photo Gallery</a></li>
            <li><a accesskey="a" href="biglietti.cgi">Acquista biglietti</a></li>
            <li><a accesskey="p" href="padiglioni.cgi">Padiglioni</a></li>
-           <li><a accesskey="p" href="commenti.cgi">Commenti</a></li>
+           <li><a accesskey="c" href="commenti.cgi">Commenti</a></li>
            <li><a accesskey="d" href="dovesiamo.cgi">Dove siamo</a></li>
-           <li><a accesskey="c" href="contatti.cgi">Contatti</a></li>
+           <li><a accesskey="n" href="contatti.cgi">Contatti</a></li>
            <TMPL_IF UTENTE>
-             <li><a accesskey="u" href="../areautente.html">Il mio account</a></li>
+             <li><a accesskey="u" href="areautente.cgi">Il mio account</a></li>
+             <li><a accesskey="g" href="gestioneBiglietti.cgi">Gestione biglietti</a></li>
+           </TMPL_IF>
+           <TMPL_IF ADMIN>
+             <li><a accesskey="r" href="controlloRicavi.cgi">Controllo ricavi</a></li>
            </TMPL_IF>
         </ul>
     </div>

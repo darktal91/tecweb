@@ -41,7 +41,7 @@ if ($cgi->param()) {
 
 #	$login{"level"} indica il livello di accessibilita' dell'utente ( 0 = non loggato, 1 = utente, 2 = admin)
 
-my %login = ("username" => "Giammariagianni", "level" => 1);
+my %login = ("username" => "Giammariagianni", "level" => 2);
 if($login{"level"} > 0){
   $autenticato=1;
   if($login{"level"}==2){
@@ -71,7 +71,7 @@ if ( exists($input{"operation"}) && $input{"operation"} eq "DELETE" ) {
     $parent = $commento->parentNode;
     $parent->removeChild($commento);
     $doc->setEncoding('UTF-8');
-    $doc->toFile("commenti.xml", 0) || die ("error", "Errore salvataggio .xml!");
+    $doc->toFile('../data/commenti/commenti.xml', 0) || die ("error", "Errore salvataggio .xml!");
     chmod 0664, $doc;
     my %row;
     $row{TIPO} = "info";
@@ -120,11 +120,12 @@ if ( exists($input{"operation"}) && $input{"operation"} eq "INSERT") {
       }
       # salvataggio del file
       $doc->setEncoding('UTF-8');
-      $doc->toFile("commenti.xml", 0) || die ("error", "Errore salvataggio .xml!");
+      $doc->toFile('../data/commenti/commenti.xml', 0) || die ("error", "Errore salvataggio .xml!");
       chmod 0664, $doc;
       # un nuovo parsing DOVREBBE aggiornare la lista dei nodi e mostrare il nuovo commento
       $doc = $parser->parse_file($file) || die ("Parser fallito!");
       $root = $doc->getDocumentElement || die ("error", "Root non trovata!");
+      $doc->documentElement->setNamespace("http://www.empirecon.it", "ns");
     }
   }
   else {

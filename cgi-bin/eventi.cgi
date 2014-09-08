@@ -6,6 +6,7 @@ use CGI::Carp qw(fatalsToBrowser);
 use XML::LibXML;
 use CGI::Session();
 use HTML::Template;
+use Encode;
 
 # creazione delle variabili dello script
 
@@ -51,15 +52,16 @@ foreach(@events){
   my $descrizione = $_->findnodes("./${ns_abbr}:descrizione");
   my %row;
   $row{ID} = "i".$id->string_value();
-  $row{TITOLO} = $titolo->string_value();
-  $row{DESCRIZIONE}=$descrizione->string_value();
+  $row{TITOLO} = enconde_utf8($titolo->string_value());
+  $row{DESCRIZIONE}=enconde_utf8($descrizione->string_value());
   push(@result, \%row);
 }
 
 # preparo la pagina usando i vari template
 my $template = HTML::Template->new(filename=>$templatePage);
 $template->param(HEADER=>qq/<TMPL_INCLUDE name = "$templateHeader">/);
-$template->param(PATH=>"Home >> Eventi");
+my $home="../index.hmtl";
+$template->param(PATH=>"<a href=\"$home\">Home</a> >> Eventi");
 $template->param(UTENTE=>0);
 $template->param(CONTENUTO=>qq/<TMPL_INCLUDE name = "$templateContent">/);
 $template->param(FOOTER=>qq/<TMPL_INCLUDE name = "$templateFooter">/);

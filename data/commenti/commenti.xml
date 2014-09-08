@@ -1,11 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <commentbook xmlns="http://www.empirecon.it"
   xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
   xs:schemaLocation="http://www.empirecon.it commenti.xsd">
   <commento>
     <username>Darth Carmine</username>
     <datetime>12/03/2014 alle 20:01</datetime>
-    <testo>WEE CHISTU SITU ME PIASCE ASSAJE</testo>
+    <testo>WEE CHISTà SITU ME PIASCE ASSAJE</testo>
   </commento>
   <commento>
     <username>Luca Camminaciello</username>

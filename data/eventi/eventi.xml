@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <eventi xmlns="http://www.empirecon.it" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
 xs:schemaLocation="http://www.empirecon.it eventi.xsd">
  <evento id="1">
 	<titolo>L'estasi di Alderaan</titolo>
-	<descrizione>Leia col bikini dorato e' nell'immaginario collettivo una delle icone di sensualità nel mondo del cinema, in questo evento e' possibile ammirare
+	<descrizione>Leia col bikini dorato è nell'immaginario collettivo una delle icone di sensualità nel mondo del cinema, in questo evento è possibile ammirare
 	le cosplay di leia in bikini dorato.
 	</descrizione>
 	<foto>
@@ -19,7 +19,7 @@ xs:schemaLocation="http://www.empirecon.it eventi.xsd">
  </evento>
  <evento id="3">
 	<titolo>La legione 501</titolo>
-	<descrizione>La legione 501, detta il pugno di Vader, e' la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
+	<descrizione>La legione 501, detta il pugno di Vader, è la personale armata del potente Signore Oscuro, unisciti e ammira la riproduzione fatta dai cosplay
 	 della celebre armata!</descrizione>
 	<foto>
 		<img src="../image/storm.jpg" alt="Cosplay stormtrooper" />
@@ -41,7 +41,7 @@ xs:schemaLocation="http://www.empirecon.it eventi.xsd">
  </evento>
  <evento id="6">
 	<titolo>Area fumetti</titolo>
-	<descrizione>I fumetti sono da sempre una delle punte di diamante del cosidetto Universo Espanso. In questo evento e' possibile acquistare i migliori
+	<descrizione>I fumetti sono da sempre una delle punte di diamante del cosidetto Universo Espanso. In questo evento è possibile acquistare i migliori
 	 fumetti dedicati alla saga e aggiornarsi sulle future uscite</descrizione>
  </evento>
  <evento id="7">
