@@ -1,18 +1,23 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="acquisti.xsl"?>
-<acquisti xmlns="http://www.imperofiere.com" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://www.imperofiere.com acquisti.xsd">
+<d:acquisti xmlns="http://www.empirecon.it" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://www.empirecon.it" xs:schemaLocation="http://www.enpirecon.it acquisti.xsd">
+
+<tipologia id="intero" prezzo="25">
+	<acquisto username="sydernee" datatime="2014-08-08T00-16-42">3</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T00-18-13">1</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T00-20-11">9</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T05-15-46">1</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T09-43-37">1</acquisto>
+</tipologia>
   
-  <tipologia id="intero" prezzo="5">
-    <acquisto username="darktal91" datatime="2014-04-24T13:06:32">5</acquisto>
-    <acquisto username="sydernee" datatime="2014-03-17T06:13:50">9</acquisto>
-    <acquisto username="sydernee" datatime="2014-04-25T11:24:47">20</acquisto>
-  </tipologia>
-  
-  <tipologia id="ridotto" prezzo="25">
-    <acquisto username="gmarcomi" datatime="2014-05-01T10:03:10">3</acquisto>
-  </tipologia>
-  
-  <tipologia id="gratis" prezzo="0">
-    <acquisto username="ilcondor" datatime="2014-06-03T03:18:33">1</acquisto>
-  </tipologia>
-</acquisti>
+<tipologia id="ridotto" prezzo="5">
+	<acquisto username="sydernee" datatime="2014-08-08T00-19-57">6</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T00-20-23">2</acquisto>
+</tipologia>
+
+<tipologia id="gratis" prezzo="0">
+	<acquisto username="sydernee" datatime="2014-08-08T00-20-39">4</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T05-06-32">3</acquisto>
+	<acquisto username="sydernee" datatime="2014-08-08T05-07-57">1</acquisto>
+</tipologia>
+</d:acquisti>
